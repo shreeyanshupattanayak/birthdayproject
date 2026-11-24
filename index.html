@@ -10,9 +10,20 @@
     gtag('config', 'G-S38X023WEE', { send_page_view: false });
   </script>
 
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "zioazub7ap");
+    window.clarity = window.clarity || function(){(window.clarity.q=window.clarity.q||[]).push(arguments)};
+  </script>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
   <title>Her Little Universe — Complete 20-Chapter Birthday Journey</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231b0c38'/%3E%3Ctext x='32' y='43' font-size='34' text-anchor='middle' fill='%23ffe6a3'%3E%E2%9C%A6%3C/text%3E%3C/svg%3E" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -1425,7 +1436,7 @@
     </div>
 
     <!-- CONTINUOUS BACKGROUND MUSIC (NEVER RESTARTS ACROSS CHAPTERS) -->
-    <audio id="bgMusic" src="assets/music/Gilded_Arrival.mp3" loop preload="auto"></audio>
+    <audio id="bgMusic" src="assets/music/Gilded_Arrival.mp3" loop preload="none"></audio>
   </main>
 
   <script>
@@ -1541,12 +1552,17 @@
           }, 350);
         }
 
-        // Track virtual chapter view in Google Analytics
+        // Track virtual chapter view in Google Analytics & Microsoft Clarity
         if (typeof window.gtag === 'function') {
           window.gtag('event', 'page_view', {
             page_title: CHAPTER_TITLES[target - 1] || `Chapter ${target}`,
             page_path: `/chapter-${String(target).padStart(2, '0')}`
           });
+        }
+        if (typeof window.clarity === 'function') {
+          try {
+            window.clarity('set', 'chapter', CHAPTER_TITLES[target - 1] || `Chapter ${target}`);
+          } catch (_) {}
         }
       }
 
@@ -1581,6 +1597,30 @@
       let musicPlaying = false;
       let sfxMuted = false;
       let sfxCtx = null;
+      let ambientLoopTimer = null;
+
+      function startFallbackAmbientLoop() {
+        if (ambientLoopTimer) return;
+        const melody = [
+          [523.25, 659.25], [587.33, 783.99], [659.25, 987.77], [587.33, 880.0],
+          [493.88, 739.99], [523.25, 659.25], [440.0, 659.25], [493.88, 783.99]
+        ];
+        let step = 0;
+        const tick = () => {
+          if (!musicPlaying) return;
+          playChime(melody[step % melody.length], 1.6);
+          step++;
+        };
+        tick();
+        ambientLoopTimer = setInterval(tick, 1850);
+      }
+
+      function stopFallbackAmbientLoop() {
+        if (ambientLoopTimer) {
+          clearInterval(ambientLoopTimer);
+          ambientLoopTimer = null;
+        }
+      }
 
       function playChime(freqs = [523.25, 659.25, 783.99], duration = 0.7) {
         if (sfxMuted) return;
@@ -1614,723 +1654,28 @@
       soundToggleBtn.addEventListener('click', () => {
         if (musicPlaying) {
           bgMusic.pause();
+          stopFallbackAmbientLoop();
           updateSoundUI(false);
         } else {
           bgMusic.volume = 0.45;
           const p = bgMusic.play();
-          if (p && p.then) p.then(() => updateSoundUI(true)).catch(() => updateSoundUI(true));
-          else updateSoundUI(true);
-        }
-      });
-
-      // =========================================================================
-      // 3. UNIFIED 60FPS CANVAS (STARS, SHOOTING STARS, BURSTS, CONFETTI, BALLOONS, FIREWORKS)
-      // =========================================================================
-      const canvas = document.getElementById('globalCanvas');
-      const ctx = canvas.getContext('2d');
-      let W = 0, H = 0, dpr = 1;
-      let stars = [], shootingStars = [], bursts = [], confetti = [], balloons = [], fireworks = [];
-      let lastShootTs = 0;
-
-      const PALETTE = ['#ffffff', '#ffe6a3', '#ffd6e7', '#ffb6d9', '#c9b2ff', '#a3d5ff'];
-      const BALLOON_COLS = ['#ffb6d9', '#c9b2ff', '#ffe6a3', '#a8f0d8'];
-
-      function resizeCanvas() {
-        W = window.innerWidth; H = window.innerHeight;
-        dpr = Math.min(window.devicePixelRatio || 1, 2);
-        canvas.width = Math.floor(W * dpr); canvas.height = Math.floor(H * dpr);
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      }
-
-      function initStars() {
-        const isMobile = W < 640;
-        const n = Math.min(Math.floor((W * H) / (isMobile ? 7600 : 5600)), isMobile ? 95 : 190);
-        stars = Array.from({ length: n }, () => ({
-          x: Math.random() * W, y: Math.random() * H, r: 0.45 + Math.random() * 1.6,
-          phase: Math.random() * Math.PI * 2, speed: 0.008 + Math.random() * 0.022,
-          color: PALETTE[Math.floor(Math.random() * PALETTE.length)]
-        }));
-      }
-
-      function spawnBurst(cx, cy, count = 26) {
-        for (let i = 0; i < count; i++) {
-          const a = Math.random() * Math.PI * 2, sp = 1 + Math.random() * 4;
-          bursts.push({ x: cx, y: cy, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 0.5, r: 1.5 + Math.random() * 2.5, alpha: 1, decay: 0.015 + Math.random() * 0.012, color: PALETTE[Math.floor(Math.random() * PALETTE.length)] });
-        }
-      }
-
-      function spawnConfetti(count = 80) {
-        for (let i = 0; i < count; i++) {
-          confetti.push({ x: Math.random() * W, y: -15 - Math.random() * H * 0.3, w: 5 + Math.random() * 7, h: 3 + Math.random() * 4, vx: (Math.random() - 0.5) * 2, vy: 1.4 + Math.random() * 2.2, rot: Math.random() * 6, rotSp: (Math.random() - 0.5) * 0.12, color: PALETTE[Math.floor(Math.random() * PALETTE.length)] });
-        }
-      }
-
-      function spawnBalloons(count = 9) {
-        for (let i = 0; i < count; i++) {
-          balloons.push({ x: W * (0.08 + Math.random() * 0.84), y: H + 50 + Math.random() * 140, rx: 18 + Math.random() * 8, ry: 23 + Math.random() * 9, vy: -(1.2 + Math.random() * 1.4), phase: Math.random() * 6, color: BALLOON_COLS[Math.floor(Math.random() * BALLOON_COLS.length)] });
-        }
-      }
-
-      function launchFirework(cx, cy) {
-        for (let i = 0; i < 60; i++) {
-          const a = (Math.PI * 2 * i) / 60 + (Math.random() - 0.5) * 0.15, sp = 1.8 + Math.random() * 5;
-          fireworks.push({ x: cx, y: cy, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, r: 1.6 + Math.random() * 2.4, alpha: 1, decay: 0.013 + Math.random() * 0.01, color: PALETTE[Math.floor(Math.random() * PALETTE.length)] });
-        }
-      }
-
-      function spawnShootingStar() {
-        shootingStars.push({ x: W * (0.1 + Math.random() * 0.55), y: H * (0.06 + Math.random() * 0.25), vx: 10, vy: 4.2, alpha: 1 });
-      }
-
-      function animateCanvas(ts) {
-        ctx.clearRect(0, 0, W, H);
-        for (let i = 0; i < stars.length; i++) {
-          const s = stars[i]; s.phase += s.speed;
-          ctx.globalAlpha = 0.35 + 0.55 * Math.sin(s.phase);
-          ctx.fillStyle = s.color; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
-        }
-        if ((currentChapter === 1 || currentChapter === 13 || currentChapter === 20) && ts - lastShootTs > 3800) {
-          lastShootTs = ts; spawnShootingStar();
-        }
-        for (let i = shootingStars.length - 1; i >= 0; i--) {
-          const st = shootingStars[i]; st.x += st.vx; st.y += st.vy; st.alpha -= 0.018;
-          if (st.alpha <= 0) { shootingStars.splice(i, 1); continue; }
-          ctx.globalAlpha = st.alpha; ctx.strokeStyle = '#ffe6a3'; ctx.lineWidth = 2.4; ctx.lineCap = 'round';
-          ctx.beginPath(); ctx.moveTo(st.x, st.y); ctx.lineTo(st.x - 85, st.y - 35); ctx.stroke();
-        }
-        for (let i = confetti.length - 1; i >= 0; i--) {
-          const c = confetti[i]; c.x += c.vx; c.y += c.vy; c.rot += c.rotSp;
-          if (c.y > H + 20) { confetti.splice(i, 1); continue; }
-          ctx.save(); ctx.translate(c.x, c.y); ctx.rotate(c.rot); ctx.globalAlpha = 0.92; ctx.fillStyle = c.color;
-          ctx.fillRect(-c.w / 2, -c.h / 2, c.w, c.h); ctx.restore();
-        }
-        for (let i = balloons.length - 1; i >= 0; i--) {
-          const b = balloons[i]; b.phase += 0.024; b.x += Math.sin(b.phase) * 0.8; b.y += b.vy;
-          if (b.y < -80) { balloons.splice(i, 1); continue; }
-          ctx.save(); ctx.translate(b.x, b.y); ctx.globalAlpha = 0.9; ctx.strokeStyle = 'rgba(255,214,231,0.5)';
-          ctx.beginPath(); ctx.moveTo(0, b.ry); ctx.lineTo(0, b.ry + 42); ctx.stroke();
-          ctx.fillStyle = b.color; ctx.beginPath(); ctx.ellipse(0, 0, b.rx, b.ry, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
-        }
-        [bursts, fireworks].forEach((arr, isFw) => {
-          for (let i = arr.length - 1; i >= 0; i--) {
-            const p = arr[i]; p.x += p.vx; p.y += p.vy; p.vx *= 0.97; p.vy = p.vy * 0.97 + (isFw ? 0.04 : 0); p.alpha -= p.decay;
-            if (p.alpha <= 0) { arr.splice(i, 1); continue; }
-            ctx.globalAlpha = p.alpha; ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
-          }
-        });
-        ctx.globalAlpha = 1;
-        requestAnimationFrame(animateCanvas);
-      }
-
-      // =========================================================================
-      // CHAPTER 02 — BUTTERFLY COMPANION (MOUSE + MOBILE TOUCH)
-      // =========================================================================
-      const bf = { x: window.innerWidth * 0.5, y: window.innerHeight * 0.45, vx: 0, vy: 0, ph: 0 };
-      let mx = null, my = null, mAct = 0;
-      window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; mAct = 100; }, { passive: true });
-      window.addEventListener('touchmove', (e) => {
-        if (currentChapter === 2 && e.touches && e.touches[0]) {
-          mx = e.touches[0].clientX; my = e.touches[0].clientY; mAct = 110;
-        }
-      }, { passive: true });
-      window.addEventListener('touchstart', (e) => {
-        if (currentChapter === 2 && e.touches && e.touches[0]) {
-          mx = e.touches[0].clientX; my = e.touches[0].clientY; mAct = 110;
-        }
-      }, { passive: true });
-      butterflyEl.addEventListener('click', () => { spawnBurst(bf.x + 23, bf.y + 23, 24); playChime([784, 988, 1175]); });
-      (function loopBf() {
-        if (currentChapter === 2) {
-          bf.ph += 0.025;
-          let tx = W * 0.5 + Math.cos(bf.ph * 0.7) * (W * 0.22), ty = H * 0.45 + Math.sin(bf.ph * 1.1) * (H * 0.14);
-          if (mAct > 0 && mx !== null) { mAct--; tx = mx + Math.cos(bf.ph * 2.2) * 52 - 23; ty = my + Math.sin(bf.ph * 2.2) * 44 - 23; }
-          bf.vx = (bf.vx + (tx - bf.x) * 0.018) * 0.91; bf.vy = (bf.vy + (ty - bf.y) * 0.018) * 0.91;
-          bf.x += bf.vx; bf.y += bf.vy;
-          butterflyEl.style.transform = `translate3d(${bf.x.toFixed(1)}px,${bf.y.toFixed(1)}px,0) rotate(${Math.max(-25, Math.min(25, bf.vx * 5)).toFixed(1)}deg)`;
-        }
-        requestAnimationFrame(loopBf);
-      })();
-
-      // =========================================================================
-      // CHAPTER 03 — CALENDAR QUIZ
-      // =========================================================================
-      let c3Solved = false;
-      document.querySelectorAll('.c3-opt').forEach((btn) => {
-        btn.addEventListener('click', () => {
-          if (c3Solved) { spawnConfetti(50); return; }
-          if (btn.dataset.date === 'January 1') {
-            c3Solved = true;
-            document.getElementById('c3CalendarFlip').classList.add('is-flipped');
-            document.getElementById('c3Feedback').textContent = '✨ You found the special day! January 1, 2027 ✨';
-            document.getElementById('c3Feedback').className = 'text-sm sm:text-base font-bold text-amber-200';
-            spawnConfetti(90); spawnBurst(W * 0.5, H * 0.44, 34); playChime([523, 659, 784, 1046]);
+          if (p && p.then) {
+            p.then(() => updateSoundUI(true)).catch(() => {
+              updateSoundUI(true);
+              startFallbackAmbientLoop();
+            });
           } else {
-            btn.classList.remove('shake-x'); void btn.offsetWidth; btn.classList.add('shake-x');
-            document.getElementById('c3Feedback').textContent = 'Ooh, close in spirit! ✨ Think earlier in January and try again!';
-            playChime([392, 349], 0.4);
+            updateSoundUI(true);
           }
-        });
-      });
-
-      // =========================================================================
-      // CHAPTER 04 — 5-CANDLE BIRTHDAY CAKE
-      // =========================================================================
-      const c4Els = Array.from(document.querySelectorAll('.c4-candle'));
-      const c4Lit = [true, true, true, true, true];
-      const c4BlowBtn = document.getElementById('c4BlowBtn');
-      const c4Banner = document.getElementById('c4WishBanner');
-      function updateC4() {
-        const allOut = c4Lit.every((v) => !v);
-        c4Banner.classList.toggle('hidden', !allOut);
-        c4BlowBtn.innerHTML = allOut ? '&#10024; Relight Candles' : '&#128168; Blow Out Candles';
-      }
-      function setC4(i, lit) {
-        c4Lit[i] = lit; c4Els[i].classList.toggle('out', !lit); updateC4();
-        if (!lit && c4Lit.every((v) => !v)) { spawnConfetti(90); spawnBalloons(10); playChime([523, 659, 784, 1046]); }
-      }
-      c4Els.forEach((el, i) => el.addEventListener('click', () => { setC4(i, !c4Lit[i]); playChime([659, 523], 0.4); }));
-      c4BlowBtn.addEventListener('click', () => { const allOut = c4Lit.every((v) => !v); c4Els.forEach((_, i) => setTimeout(() => setC4(i, allOut), i * 95)); });
-      document.getElementById('c4CelebrateBtn').addEventListener('click', () => { spawnConfetti(85); spawnBalloons(10); playChime([587, 740, 880, 1175]); });
-
-      // =========================================================================
-      // CHAPTER 05 — BIRTHDAY LETTER
-      // =========================================================================
-      const c5Env = document.getElementById('c5Envelope');
-      const letterModal = document.getElementById('letterModal');
-      function openC5() { c5Env.classList.add('opened'); playChime([523, 659, 784, 1046]); setTimeout(() => letterModal.classList.add('open'), 520); }
-      function closeC5() { letterModal.classList.remove('open'); setTimeout(() => c5Env.classList.remove('opened'), 250); }
-      c5Env.addEventListener('click', openC5);
-      document.getElementById('c5OpenBtn').addEventListener('click', openC5);
-      document.getElementById('c5CloseBtn').addEventListener('click', closeC5);
-      letterModal.addEventListener('click', (e) => { if (e.target === letterModal) closeC5(); });
-
-      // =========================================================================
-      // CHAPTER 06 — 10 LITTLE THINGS
-      // =========================================================================
-      const C6_ITEMS = [
-        'Your smile makes ordinary moments brighter.', 'You deserve countless happy moments.',
-        'Your uniqueness is something special.', 'Keep believing in your dreams.',
-        'Never lose your curiosity.', 'Your kindness matters.',
-        'Every little achievement counts.', 'Keep exploring the world.',
-        'You deserve good memories.', 'Always keep being yourself.'
-      ];
-      const c6Grid = document.getElementById('c6Grid');
-      const c6Set = new Set(), c6Inners = [];
-      C6_ITEMS.forEach((txt, i) => {
-        const w = document.createElement('div'); w.className = 'perspective-box h-[132px]';
-        const inn = document.createElement('div'); inn.className = 'flip-3d-inner';
-        inn.innerHTML = `
-          <div class="flip-face glass-panel"><span class="text-[10px] uppercase tracking-widest text-pink-200/75">&#10022; Note</span><span class="font-display text-3xl font-bold name-gradient">${i + 1}</span></div>
-          <div class="flip-face flip-face-back keepsake-cream-card p-3"><span class="text-[10px] font-bold text-purple-700 mb-1">#${i + 1}</span><p class="font-serif-elegant text-xs sm:text-sm font-semibold text-purple-950 leading-snug">${txt}</p></div>
-        `;
-        inn.addEventListener('click', () => {
-          if (inn.classList.toggle('is-flipped')) { c6Set.add(i); document.getElementById('c6Count').textContent = `${c6Set.size} / 10`; playChime([523 + i * 25, 784], 0.45); }
-        });
-        c6Inners.push(inn); w.appendChild(inn); c6Grid.appendChild(w);
-      });
-      document.getElementById('c6FlipAll').addEventListener('click', () => {
-        const all = c6Inners.every((el) => el.classList.contains('is-flipped'));
-        c6Inners.forEach((el, i) => setTimeout(() => { el.classList.toggle('is-flipped', !all); if (!all) c6Set.add(i); document.getElementById('c6Count').textContent = `${c6Set.size} / 10`; }, i * 45));
-      });
-
-      // =========================================================================
-      // CHAPTER 07 — SMILE COLLECTION (6 POLAROIDS)
-      // =========================================================================
-      const C7_NOTES = [
-        'A candid smile that brightens up the room.', 'Spontaneous laughs worth remembering.',
-        'Golden hour sunshine matching your energy.', 'Everyday adventures turned into stories.',
-        'Pure joy captured in a single frame.', 'Here is to many more smiles ahead!'
-      ];
-      const c7Grid = document.getElementById('c7Grid');
-      const c7Set = new Set();
-      C7_NOTES.forEach((msg, i) => {
-        const card = document.createElement('article'); card.className = 'polaroid-item text-center';
-        card.innerHTML = `
-          <div class="w-full aspect-[16/10] rounded-md bg-gradient-to-br from-[#2b124c] to-[#1c0b36] border border-dashed border-amber-200/70 flex flex-col items-center justify-center">
-            <span class="font-display text-xs font-bold text-amber-200">ADD PHOTO HERE</span>
-          </div>
-          <p class="font-handwritten text-xl font-bold text-purple-950 mt-2">Memory #0${i + 1}</p>
-          <p class="c7-note hidden font-handwritten text-base text-purple-800 mt-1 border-t border-dashed border-purple-300 pt-1">“${msg}”</p>
-        `;
-        card.addEventListener('click', () => {
-          card.querySelector('.c7-note').classList.toggle('hidden');
-          c7Set.add(i); document.getElementById('c7Count').textContent = `${c7Set.size} / 6`;
-          playChime([587 + i * 30, 880], 0.45);
-        });
-        c7Grid.appendChild(card);
-      });
-
-      // =========================================================================
-      // CHAPTER 08 — LITTLE MOMENTS (5 CHECKPOINTS)
-      // =========================================================================
-      const C8_DATA = [
-        { t: 'Little Beginnings', m: 'Every wonderful story starts with quiet, simple beginnings and small sparks of everyday magic.' },
-        { t: 'Happy Surprises', m: 'Life feels sweetest in spontaneous little bursts of joy—a favorite song or an unexpected reason to smile.' },
-        { t: 'Beautiful Days', m: 'Here is to calm, peaceful days filled with soft pastel skies, gentle laughter, and appreciating right now.' },
-        { t: 'Unexpected Smiles', m: 'Often the simplest, unplanned moments carry the brightest warmth and become favorite memories.' },
-        { t: 'More Memories Ahead', m: 'The best chapters are still ahead—filled with new adventures and simple everyday happiness.' }
-      ];
-      const c8Box = document.getElementById('c8Timeline'), c8Set = new Set(), c8Cards = [];
-      C8_DATA.forEach((item, i) => {
-        const el = document.createElement('div'); el.className = 'glass-panel rounded-2xl p-4 flex flex-col items-center gap-2 cursor-pointer transition hover:border-amber-200';
-        el.innerHTML = `
-          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-amber-200 to-pink-300 text-purple-950 font-display font-bold flex items-center justify-center shadow-[0_0_18px_rgba(255,230,163,0.75)]">${i + 1}</div>
-          <h3 class="font-display text-xs sm:text-sm font-bold text-amber-200">${item.t}</h3>
-          <p class="c8-msg hidden text-xs text-pink-50/95 leading-relaxed">${item.m}</p>
-        `;
-        el.addEventListener('click', () => {
-          el.querySelector('.c8-msg').classList.toggle('hidden');
-          c8Set.add(i); document.getElementById('c8Count').textContent = `${c8Set.size} / 5 EXPLORED`;
-          playChime([523 + i * 45, 784 + i * 40], 0.55);
-        });
-        c8Cards.push(el); c8Box.appendChild(el);
-      });
-      document.getElementById('c8RevealAll').addEventListener('click', () => {
-        c8Cards.forEach((c, i) => { c.querySelector('.c8-msg').classList.remove('hidden'); c8Set.add(i); });
-        document.getElementById('c8Count').textContent = '5 / 5 EXPLORED';
-      });
-
-      // =========================================================================
-      // CHAPTER 09 — A FEW NICE WORDS (14 CARDS)
-      // =========================================================================
-      const C9_CARDS = [
-        'You have your own kind of magic.', 'Your dreams deserve a chance.',
-        'Keep making the world a little brighter.', 'Your curiosity can take you far.',
-        'Never underestimate the power of a small smile.', 'The way you notice little details makes every day richer.',
-        'Your kindness leaves a gentle mark wherever you go.', 'You bring a calm, uplifting energy into every room.',
-        'Even on quiet days, your resilience shines through.', 'Your creativity turns ordinary ideas into something wonderful.',
-        'Being genuinely yourself is your greatest superpower.', 'Your laughter makes everything feel lighter.',
-        'Every step you take toward your goals is worth celebrating.', 'The world is genuinely better with your bright spirit in it.'
-      ];
-      let c9Idx = -1; const c9Seen = new Set();
-      const c9Card3D = document.getElementById('c9Card3D');
-      const c9ShuffleBtn = document.getElementById('c9ShuffleBtn');
-      function nextC9() {
-        c9Card3D.classList.remove('is-flipped');
-        setTimeout(() => {
-          c9Idx = (c9Idx + 1) % C9_CARDS.length;
-          c9Seen.add(c9Idx);
-          document.getElementById('c9Badge').innerHTML = `&#10022; Card #${String(c9Idx + 1).padStart(2, '0')} of 14 &#10022;`;
-          document.getElementById('c9Quote').textContent = `“${C9_CARDS[c9Idx]}”`;
-          document.getElementById('c9Count').textContent = `${c9Seen.size} / 14 CARDS DISCOVERED`;
-          c9ShuffleBtn.innerHTML = '&#10227; Shuffle Another Card';
-          c9Card3D.classList.add('is-flipped');
-          spawnBurst(W * 0.5, H * 0.46, 26); playChime([523, 659, 784, 1046]);
-        }, c9Seen.size === 0 ? 40 : 280);
-      }
-      c9ShuffleBtn.addEventListener('click', nextC9);
-      c9Card3D.addEventListener('click', nextC9);
-
-      // =========================================================================
-      // CHAPTER 10 — YOUR COLORFUL WORLD (7 ORBS)
-      // =========================================================================
-      const C10_ORBS = [
-        { n: 'Pink', t: 'Pink — A little more happiness.', w: 'For sweet moments and warm smiles.', bg: 'radial-gradient(circle at 35% 30%,#fff0f6,#ff9ec7,#e05697)', glow: 'rgba(255,158,199,0.75)', wash: 'rgba(255,158,199,0.34)' },
-        { n: 'Purple', t: 'Purple — Keep dreaming big.', w: 'For boundless imagination and starry ambitions.', bg: 'radial-gradient(circle at 35% 30%,#f5ebff,#c9b2ff,#7c4bc9)', glow: 'rgba(201,178,255,0.75)', wash: 'rgba(201,178,255,0.34)' },
-        { n: 'Blue', t: 'Blue — Peaceful and beautiful days.', w: 'For calm skies and serene horizons.', bg: 'radial-gradient(circle at 35% 30%,#eef9ff,#8ed6ff,#3b82f6)', glow: 'rgba(142,214,255,0.75)', wash: 'rgba(142,214,255,0.32)' },
-        { n: 'Yellow', t: 'Yellow — Sunshine and laughter.', w: 'For golden rays of cheer and bright energy.', bg: 'radial-gradient(circle at 35% 30%,#fffbeb,#ffe680,#f59e0b)', glow: 'rgba(255,230,128,0.8)', wash: 'rgba(255,230,128,0.32)' },
-        { n: 'Green', t: 'Green — New beginnings.', w: 'For fresh chapters and blooming possibilities.', bg: 'radial-gradient(circle at 35% 30%,#ecfdf5,#86efac,#10b981)', glow: 'rgba(134,239,172,0.75)', wash: 'rgba(134,239,172,0.3)' },
-        { n: 'Orange', t: 'Orange — Adventures and excitement.', w: 'For bold curiosity and joyful discoveries.', bg: 'radial-gradient(circle at 35% 30%,#fff7ed,#fdba74,#f97316)', glow: 'rgba(253,186,116,0.8)', wash: 'rgba(253,186,116,0.32)' },
-        { n: 'White', t: 'White — Endless possibilities.', w: 'A pure canvas of starlight ready for all the magic ahead.', bg: 'radial-gradient(circle at 35% 30%,#ffffff,#f8fafc,#cbd5e1)', glow: 'rgba(255,255,255,0.85)', wash: 'rgba(255,255,255,0.28)' }
-      ];
-      const c10Wrap = document.getElementById('c10Orbs'), c10Set = new Set();
-      C10_ORBS.forEach((o, i) => {
-        const col = document.createElement('div'); col.className = 'flex flex-col items-center gap-1';
-        const b = document.createElement('button'); b.type = 'button'; b.className = 'color-orb';
-        b.style.background = o.bg; b.style.setProperty('--oglow', o.glow);
-        b.addEventListener('click', () => {
-          document.querySelectorAll('.color-orb').forEach((x) => x.classList.remove('active'));
-          b.classList.add('active'); c10Set.add(o.n);
-          document.getElementById('c10Count').textContent = `${c10Set.size} / 7 COLORS AWAKENED`;
-          document.documentElement.style.setProperty('--ch10-wash', o.wash);
-          document.getElementById('c10Tag').innerHTML = `&#10022; ${o.n} Light &#10022;`;
-          document.getElementById('c10Title').textContent = o.t;
-          document.getElementById('c10Wish').textContent = o.w;
-          const r = b.getBoundingClientRect(); spawnBurst(r.left + 32, r.top + 32, 26); playChime([523 + i * 55, 784 + i * 45], 0.65);
-        });
-        const lbl = document.createElement('span'); lbl.className = 'text-[10px] font-bold uppercase tracking-widest text-pink-100'; lbl.textContent = o.n;
-        col.appendChild(b); col.appendChild(lbl); c10Wrap.appendChild(col);
-      });
-
-      // =========================================================================
-      // CHAPTER 11 — MUSIC CORNER
-      // =========================================================================
-      let c11Track = 0, c11Playing = false, c11Prog = 0;
-      const c11Wave = document.getElementById('c11Wave'), c11Bars = [];
-      for (let i = 0; i < 18; i++) { const s = document.createElement('span'); s.className = 'w-1 rounded-full bg-gradient-to-t from-purple-300 via-pink-300 to-amber-200 transition-all'; s.style.height = '5px'; c11Wave.appendChild(s); c11Bars.push(s); }
-      const c11Grid = document.getElementById('c11TracksGrid'), c11Cards = [];
-      [1, 2, 3].forEach((n, idx) => {
-        const card = document.createElement('button'); card.type = 'button';
-        card.className = 'glass-panel rounded-2xl p-3 text-left cursor-pointer hover:border-amber-200 transition';
-        card.innerHTML = `<div class="w-full aspect-video rounded-xl bg-gradient-to-br from-purple-900 via-pink-900/60 to-purple-950 border border-dashed border-amber-200/60 flex items-center justify-center mb-2"><span class="px-2.5 py-1 rounded-full bg-[#140829]/80 text-[10px] font-display font-bold text-amber-200">&#9835; ADD MUSIC HERE</span></div><p class="text-[10px] font-bold text-amber-200">TRACK 0${n}</p><p class="text-xs font-bold text-white">ADD MUSIC HERE</p><p class="text-[10px] text-pink-200/80">ADD AUDIO FILE HERE</p>`;
-        card.addEventListener('click', () => { c11Track = idx; c11Prog = 0; updateC11(true); });
-        c11Cards.push(card); c11Grid.appendChild(card);
-      });
-      function updateC11(play) {
-        c11Playing = play;
-        document.getElementById('c11Vinyl').classList.toggle('spinning', play);
-        document.getElementById('c11VinylCode').textContent = `TRACK 0${c11Track + 1}`;
-        document.getElementById('c11TrackTitle').textContent = `TRACK 0${c11Track + 1} — ADD MUSIC HERE`;
-        document.getElementById('c11PlayPause').innerHTML = play ? '&#10074;&#10074; Pause' : '&#9654; Play';
-        c11Cards.forEach((c, i) => c.style.borderColor = i === c11Track ? '#ffe6a3' : 'rgba(255,214,231,0.4)');
-      }
-      document.getElementById('c11PlayPause').addEventListener('click', () => updateC11(!c11Playing));
-      document.getElementById('c11PrevTrack').addEventListener('click', () => { c11Track = (c11Track + 2) % 3; c11Prog = 0; updateC11(c11Playing); });
-      document.getElementById('c11NextTrack').addEventListener('click', () => { c11Track = (c11Track + 1) % 3; c11Prog = 0; updateC11(c11Playing); });
-      setInterval(() => {
-        if (c11Playing && currentChapter === 11) {
-          c11Prog = (c11Prog + 1.2) % 100;
-          document.getElementById('c11Progress').style.width = `${c11Prog}%`;
-          c11Bars.forEach((b) => { b.style.height = `${6 + Math.random() * 20}px`; });
-        } else { c11Bars.forEach((b) => { b.style.height = '5px'; }); }
-      }, 160);
-
-      // =========================================================================
-      // CHAPTER 12 — TYPE A WISH & BLOW 3 CANDLES
-      // =========================================================================
-      const c12Els = Array.from(document.querySelectorAll('.c12-candle'));
-      const c12Input = document.getElementById('c12WishInput');
-      const c12InputWrap = document.getElementById('c12InputWrap');
-      const c12Result = document.getElementById('c12WishResult');
-      const c12SavedWish = document.getElementById('c12SavedWish');
-      const risingOrb = document.getElementById('risingWishOrb');
-      let c12Hidden = false;
-
-      function blowC12() {
-        const txt = c12Input.value.trim() || 'A sweet secret wish for the stars ✨';
-        c12SavedWish.textContent = `“${txt}”`;
-        risingOrb.textContent = `✨ “${txt}” ✨`;
-        risingOrb.classList.remove('soar'); void risingOrb.offsetWidth; risingOrb.classList.add('soar');
-        playChime([659, 880, 1175]);
-        setTimeout(() => {
-          c12Els.forEach((el, i) => setTimeout(() => el.classList.add('out'), i * 130));
-          c12InputWrap.classList.add('hidden');
-          c12Result.classList.remove('hidden');
-          spawnConfetti(110); spawnBalloons(10); playChime([523, 659, 784, 1046, 1318], 1);
-        }, 900);
-      }
-      document.getElementById('c12BlowBtn').addEventListener('click', blowC12);
-      c12Input.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); blowC12(); } });
-      document.getElementById('c12ResetBtn').addEventListener('click', () => {
-        c12Els.forEach((el) => el.classList.remove('out'));
-        c12Input.value = ''; c12InputWrap.classList.remove('hidden'); c12Result.classList.add('hidden');
-        playChime([523, 659, 784]);
-      });
-      document.getElementById('c12PrivacyBtn').addEventListener('click', (e) => {
-        c12Hidden = !c12Hidden;
-        c12SavedWish.style.filter = c12Hidden ? 'blur(5px)' : 'none';
-        e.target.textContent = c12Hidden ? 'Show' : 'Hide';
-      });
-
-      // =========================================================================
-      // CHAPTER 13 — MAKE A WISH (100% LOCAL)
-      // =========================================================================
-      let c13Sent = 0;
-      const c13Ta = document.getElementById('c13Textarea');
-      document.getElementById('c13SendBtn').addEventListener('click', () => {
-        const w = c13Ta.value.trim();
-        if (!w) { document.getElementById('c13Card').classList.add('shake-x'); setTimeout(() => document.getElementById('c13Card').classList.remove('shake-x'), 450); return; }
-        c13Sent++;
-        document.getElementById('c13StarsCount').textContent = `${c13Sent} ${c13Sent === 1 ? 'STAR' : 'STARS'} SENT`;
-        risingOrb.textContent = `⭐ “${w}” ⭐`;
-        risingOrb.classList.remove('soar'); void risingOrb.offsetWidth; risingOrb.classList.add('soar');
-        c13Ta.value = '';
-        spawnShootingStar(); spawnBurst(W * 0.5, H * 0.55, 34); playChime([523, 659, 784, 1046, 1318], 1);
-        setTimeout(() => {
-          document.getElementById('c13InputMode').classList.add('hidden');
-          document.getElementById('c13SentMode').classList.remove('hidden');
-          document.getElementById('c13SentMode').classList.add('flex');
-        }, 650);
-      });
-      document.getElementById('c13ResetBtn').addEventListener('click', () => {
-        document.getElementById('c13SentMode').classList.add('hidden');
-        document.getElementById('c13SentMode').classList.remove('flex');
-        document.getElementById('c13InputMode').classList.remove('hidden');
-      });
-
-      // =========================================================================
-      // CHAPTER 14 — HAPPINESS GENERATOR (24 MESSAGES)
-      // =========================================================================
-      const C14_MSGS = [
-        'Today is full of possibilities.', 'Take a moment to enjoy the little things.',
-        'Something beautiful can begin with one small step.', 'Keep smiling and exploring.',
-        'Your next adventure is waiting.', 'You bring a bright, uplifting energy wherever you go.',
-        'Every single day holds a fresh reason to feel grateful.', 'Curiosity is your superpower—never stop wondering.',
-        'Small moments of joy add up to a wonderful life.', 'Believe in the magic of your own ideas.',
-        'The world feels a little sunnier with your smile in it.', 'Good things are always finding their way toward you.',
-        'Celebrate how far you have come and all the fun ahead.', 'A peaceful heart and a curious mind can go anywhere.',
-        'Your kindness creates ripples of happiness around you.', 'There is no rush—enjoy every step of your journey.',
-        'Even cloudy skies hide bright stars waiting to shine.', 'You deserve days filled with laughter and ease.',
-        'Every new chapter is a blank page ready for your colors.', 'Never forget how unique and capable you truly are.',
-        'Happiness often hides in the simplest everyday surprises.', 'Keep dreaming big and cheering for yourself.',
-        'Your positive spirit turns ordinary moments into treasures.', 'May today bring you calm, cheer, and a big reason to smile.'
-      ];
-      const c14Seen = new Set(); let c14Busy = false;
-      const capsuleModal = document.getElementById('capsuleModal');
-      function runC14() {
-        if (c14Busy) return; c14Busy = true;
-        capsuleModal.classList.remove('open');
-        const rig = document.getElementById('c14Machine'); rig.classList.add('working');
-        playChime([392, 440, 523, 587], 0.55); spawnBurst(W * 0.5, H * 0.48, 30);
-        setTimeout(() => {
-          rig.classList.remove('working');
-          const idx = Math.floor(Math.random() * C14_MSGS.length);
-          c14Seen.add(idx);
-          document.getElementById('c14Count').textContent = `${c14Seen.size} / 24 CAPSULES OPENED`;
-          document.getElementById('c14Tag').innerHTML = `&#10022; Capsule #${idx + 1} of 24 &#10022;`;
-          document.getElementById('c14Quote').textContent = `“${C14_MSGS[idx]}”`;
-          capsuleModal.classList.add('open');
-          spawnBurst(W * 0.5, H * 0.45, 38); playChime([523, 659, 784, 1046]);
-          c14Busy = false;
-        }, 900);
-      }
-      document.getElementById('c14GenBtn').addEventListener('click', runC14);
-      document.getElementById('c14Machine').addEventListener('click', runC14);
-      document.getElementById('c14AgainBtn').addEventListener('click', runC14);
-      document.getElementById('c14CloseBtn').addEventListener('click', () => capsuleModal.classList.remove('open'));
-      capsuleModal.addEventListener('click', (e) => { if (e.target === capsuleModal) capsuleModal.classList.remove('open'); });
-
-      // =========================================================================
-      // CHAPTER 15 — MINI FUN QUIZ (5 QUESTIONS)
-      // =========================================================================
-      const C15_QS = [
-        { q: 'Which place would you explore?', o: [['A','Magical forest','🌲'],['B','Outer space','🚀'],['C','Underwater world','🐚']] },
-        { q: 'Pick your favourite weather.', o: [['A','Rainy','🌧️'],['B','Sunny','☀️'],['C','Snowy','❄️']] },
-        { q: 'Choose a magical power.', o: [['A','Flying','🪽'],['B','Time travel','⏳'],['C','Talking to animals','🦋']] },
-        { q: 'Choose a perfect weekend.', o: [['A','Movie and snacks','🍿'],['B','Exploring somewhere new','🧭'],['C','Relaxing at home','🧸']] },
-        { q: 'Pick a magical companion.', o: [['A','Tiny dragon','🐉'],['B','Baby unicorn','🦄'],['C','Flying cat','🐱']] }
-      ];
-      const C15_MSGS = [
-        'You have an adventurous, imaginative spirit that makes every day brighter!',
-        'Your choices show a wonderful balance of curiosity, cozy joy, and everyday magic!',
-        'You bring a bright, playful energy wherever you go—what a wonderful combination!'
-      ];
-      let c15Idx = 0, c15Picks = [];
-      function renderC15() {
-        const q = C15_QS[c15Idx];
-        document.getElementById('c15StepLabel').textContent = `QUESTION ${c15Idx + 1} OF 5`;
-        document.getElementById('c15Bar').style.width = `${((c15Idx + 1) / 5) * 100}%`;
-        document.getElementById('c15QText').textContent = q.q;
-        const box = document.getElementById('c15Opts'); box.innerHTML = '';
-        q.o.forEach(([l, txt, ic], oi) => {
-          const b = document.createElement('button'); b.type = 'button';
-          b.className = 'w-full px-4 py-3 rounded-2xl bg-white/10 border border-pink-200/35 hover:border-amber-200 hover:bg-purple-800/40 flex items-center justify-between text-white font-semibold cursor-pointer transition';
-          b.innerHTML = `<span><strong class="text-amber-200 mr-2">${l}.</strong>${txt}</span><span class="text-xl">${ic}</span>`;
-          b.addEventListener('click', () => {
-            c15Picks.push(`${ic} ${txt}`); playChime([523 + oi * 75, 784], 0.5);
-            if (c15Idx < 4) { c15Idx++; renderC15(); }
-            else {
-              document.getElementById('c15QBox').classList.add('hidden');
-              const res = document.getElementById('c15ResultBox'); res.classList.remove('hidden'); res.classList.add('flex');
-              document.getElementById('c15ResultMsg').textContent = `“${C15_MSGS[Math.floor(Math.random() * C15_MSGS.length)]}”`;
-              document.getElementById('c15Summary').innerHTML = c15Picks.map((p) => `<span class="px-3 py-1 rounded-full bg-white/10 border border-pink-200/30 text-xs text-amber-200">${p}</span>`).join('');
-              spawnConfetti(80); playChime([523, 659, 784, 1046]);
-            }
-          });
-          box.appendChild(b);
-        });
-      }
-      document.getElementById('c15PlayAgain').addEventListener('click', () => {
-        c15Idx = 0; c15Picks = [];
-        document.getElementById('c15ResultBox').classList.add('hidden');
-        document.getElementById('c15ResultBox').classList.remove('flex');
-        document.getElementById('c15QBox').classList.remove('hidden');
-        renderC15();
-      });
-      renderC15();
-
-      // =========================================================================
-      // CHAPTER 16 — 8 POLAROID GALLERY + LIGHTBOX
-      // =========================================================================
-      const C16_FRAMES = [
-        ['Little moments', 'Quiet everyday details that bring a warm smile.', 'linear-gradient(145deg,#4b1d78,#ff9ec7)'],
-        ['Beautiful smiles', 'Bright energy that lights up any ordinary day.', 'linear-gradient(145deg,#2d1459,#c9b2ff)'],
-        ['Just a little happiness', 'Simple joys worth pausing to appreciate.', 'linear-gradient(145deg,#3b176e,#ffe6a3)'],
-        ['Memories worth keeping', 'Little snapshots saved for sunny days ahead.', 'linear-gradient(145deg,#27114b,#a3d5ff)'],
-        ['Brighter days ahead', 'Every new chapter brings fresh reasons to smile.', 'linear-gradient(145deg,#431a75,#ffb6d9)'],
-        ['Sweet little details', 'Noticing the small wonders hidden in every day.', 'linear-gradient(145deg,#2b1354,#ffd6e7)'],
-        ['Golden afternoon glow', 'Warm light, calm skies, and peaceful vibes.', 'linear-gradient(145deg,#3e196e,#ffe6a3)'],
-        ['Smiles to remember', 'Celebrating all the wonderful moments still to come.', 'linear-gradient(145deg,#241046,#ff9ec7)']
-      ];
-      const c16Grid = document.getElementById('c16Grid');
-      const galleryModal = document.getElementById('galleryModal');
-      let c16Cur = 0;
-      function openC16(idx) {
-        c16Cur = (idx + 8) % 8;
-        const [cap, sub, bg] = C16_FRAMES[c16Cur];
-        document.getElementById('c16BoxWindow').style.background = bg;
-        document.getElementById('c16FrameNum').textContent = `Frame 0${c16Cur + 1} of 08`;
-        document.getElementById('c16CapTitle').textContent = cap;
-        document.getElementById('c16CapSub').textContent = sub;
-        galleryModal.classList.add('open');
-        playChime([523 + c16Cur * 30, 784], 0.45);
-      }
-      C16_FRAMES.forEach(([cap, , bg], i) => {
-        const card = document.createElement('article'); card.className = 'polaroid-item text-center';
-        card.innerHTML = `<div class="w-full aspect-[4/3] rounded-md border border-dashed border-amber-200 flex items-center justify-center" style="background:${bg}"><span class="px-2.5 py-1 rounded-full bg-[#140829]/75 font-display text-[11px] font-bold text-amber-200">ADD PHOTO HERE</span></div><p class="font-handwritten text-xl font-bold text-purple-950 mt-2">${cap}</p>`;
-        card.addEventListener('click', () => openC16(i));
-        c16Grid.appendChild(card);
-      });
-      document.getElementById('c16Close').addEventListener('click', () => galleryModal.classList.remove('open'));
-      document.getElementById('c16Prev').addEventListener('click', () => openC16(c16Cur - 1));
-      document.getElementById('c16Next').addEventListener('click', () => openC16(c16Cur + 1));
-      galleryModal.addEventListener('click', (e) => { if (e.target === galleryModal) galleryModal.classList.remove('open'); });
-
-      // =========================================================================
-      // CHAPTER 17 — TREASURE CHEST (16 SURPRISES)
-      // =========================================================================
-      const C17_MSGS = [
-        'Never stop discovering new things.', 'May your days be filled with laughter.',
-        'Small joys can make big memories.', 'Keep your imagination alive.',
-        "There's always something beautiful to discover.", 'A little kindness goes a very long way.',
-        'Every ordinary day holds a tiny spark of magic.', 'Keep chasing the things that make your eyes light up.',
-        'Your curiosity is one of your brightest superpowers.', 'May good surprises find you when you least expect them.',
-        "Take a deep breath and enjoy how far you've come.", 'Brighter mornings and peaceful evenings are always ahead.',
-        'Never lose your sense of wonder.', 'Even the smallest smile can brighten an entire afternoon.',
-        'May your heart always feel light, safe, and cheerful.', 'Something wonderful is always waiting just around the corner.'
-      ];
-      let c17Idx = -1; const c17Seen = new Set();
-      function openC17() {
-        const chest = document.getElementById('c17Chest');
-        chest.classList.remove('open');
-        setTimeout(() => {
-          c17Idx = (c17Idx + 1) % C17_MSGS.length; c17Seen.add(c17Idx);
-          chest.classList.add('open');
-          document.getElementById('c17Card').classList.remove('hidden');
-          document.getElementById('c17Tag').textContent = `Surprise #${c17Idx + 1} of 16`;
-          document.getElementById('c17Msg').textContent = `“${C17_MSGS[c17Idx]}”`;
-          document.getElementById('c17Count').textContent = `${c17Seen.size} / 16 SURPRISES DISCOVERED`;
-          document.getElementById('c17Btn').innerHTML = '&#10227; Another Surprise';
-          spawnConfetti(70); spawnBurst(W * 0.5, H * 0.45, 34); playChime([523, 659, 784, 1046]);
-        }, 160);
-      }
-      document.getElementById('c17Btn').addEventListener('click', openC17);
-      document.getElementById('c17Chest').addEventListener('click', openC17);
-
-      // =========================================================================
-      // CHAPTER 18 — MEMORY GAME (12 CARDS / 6 PAIRS)
-      // =========================================================================
-      const C18_PAIRS = [['⭐','Stars'],['💖','Hearts'],['🌸','Flowers'],['☁️','Clouds'],['🦋','Butterflies'],['🌙','Moons']];
-      let c18Open = [], c18Matched = 0, c18Moves = 0, c18Lock = false;
-      function initC18() {
-        c18Open = []; c18Matched = 0; c18Moves = 0; c18Lock = false;
-        document.getElementById('c18Moves').textContent = '0';
-        document.getElementById('c18Pairs').textContent = '0 / 6';
-        document.getElementById('c18Victory').classList.add('hidden');
-        const deck = [...C18_PAIRS, ...C18_PAIRS].sort(() => Math.random() - 0.5);
-        const grid = document.getElementById('c18Grid'); grid.innerHTML = '';
-        deck.forEach(([em, lbl]) => {
-          const slot = document.createElement('div'); slot.className = 'perspective-box aspect-square';
-          const card = document.createElement('div'); card.className = 'flip-3d-inner'; card.dataset.lbl = lbl;
-          card.innerHTML = `
-            <div class="flip-face glass-panel"><span class="font-display text-3xl sm:text-4xl font-bold name-gradient">?</span></div>
-            <div class="flip-face flip-face-back keepsake-cream-card"><span class="text-3xl sm:text-4xl">${em}</span><span class="text-[10px] font-bold uppercase text-purple-900 mt-1">${lbl}</span></div>
-          `;
-          card.addEventListener('click', () => {
-            if (c18Lock || card.classList.contains('is-flipped') || card.dataset.done === '1') return;
-            card.classList.add('is-flipped'); c18Open.push(card); playChime([620], 0.25);
-            if (c18Open.length === 2) {
-              c18Lock = true; c18Moves++; document.getElementById('c18Moves').textContent = String(c18Moves);
-              const [a, b] = c18Open;
-              if (a.dataset.lbl === b.dataset.lbl) {
-                a.dataset.done = b.dataset.done = '1'; c18Matched++;
-                document.getElementById('c18Pairs').textContent = `${c18Matched} / 6`;
-                playChime([523, 659, 784, 1046]); c18Open = []; c18Lock = false;
-                if (c18Matched === 6) { document.getElementById('c18Victory').classList.remove('hidden'); spawnConfetti(100); }
-              } else {
-                setTimeout(() => { a.classList.remove('is-flipped'); b.classList.remove('is-flipped'); c18Open = []; c18Lock = false; }, 760);
-              }
-            }
-          });
-          slot.appendChild(card); grid.appendChild(slot);
-        });
-      }
-      document.getElementById('c18Restart').addEventListener('click', initC18);
-      initC18();
-
-      // =========================================================================
-      // CHAPTER 19 — A LITTLE MYSTERY GIFT
-      // =========================================================================
-      const C19_GIFTS = [
-        'Your gift is a little reminder:<br/>Keep dreaming, keep exploring,<br/>and never forget to enjoy the little things.<br/><strong class="text-pink-600 italic block mt-2">You deserve countless happy moments!</strong>',
-        'A pocket-sized wish for your days ahead:<br/>May curiosity always lead you to wonder,<br/>and may laughter find you in the simplest places.<br/><strong class="text-pink-600 italic block mt-2">Keep shining in your own bright way!</strong>',
-        'Wherever your next chapter takes you:<br/>May your mornings feel light and hopeful,<br/>and your evenings feel peaceful and warm.<br/><strong class="text-pink-600 italic block mt-2">The best adventures are still ahead!</strong>'
-      ];
-      let c19Idx = 0, c19Busy = false;
-      const c19Box = document.getElementById('c19Box'), c19Card = document.getElementById('c19Card');
-      const c19OpenBtn = document.getElementById('c19OpenBtn'), c19AnotherBtn = document.getElementById('c19AnotherBtn');
-
-      function openC19() {
-        if (c19Busy || c19Box.classList.contains('opened')) return;
-        c19Busy = true; c19Box.classList.add('shaking'); playChime([392, 440, 523], 0.45);
-        setTimeout(() => { c19Box.classList.remove('shaking'); c19Box.classList.add('untied'); }, 580);
-        setTimeout(() => {
-          c19Box.classList.add('opened');
-          document.getElementById('c19Msg').innerHTML = C19_GIFTS[c19Idx % C19_GIFTS.length];
-          c19Card.classList.remove('hidden'); c19OpenBtn.classList.add('hidden'); c19AnotherBtn.classList.remove('hidden');
-          spawnBurst(W * 0.5, H * 0.45, 55); spawnConfetti(70); playChime([523, 659, 784, 1046, 1318], 1);
-          c19Busy = false;
-        }, 1050);
-      }
-      c19OpenBtn.addEventListener('click', openC19);
-      c19Box.addEventListener('click', openC19);
-      c19AnotherBtn.addEventListener('click', () => {
-        c19Idx++; c19Card.classList.add('hidden'); c19Box.classList.remove('opened', 'untied');
-        c19AnotherBtn.classList.add('hidden'); c19OpenBtn.classList.remove('hidden');
-      });
-
-      // =========================================================================
-      // CHAPTER 20 — GRAND FINALE FIREWORKS BUTTON
-      // =========================================================================
-      document.getElementById('c20FireworksBtn').addEventListener('click', () => {
-        launchFirework(W * (0.2 + Math.random() * 0.6), H * (0.14 + Math.random() * 0.24));
-        spawnShootingStar(); playChime([523, 659, 784, 1046, 1318], 1);
-      });
-
-      // =========================================================================
-      // INITIALIZE ENGINE ON WINDOW LOAD
-      // =========================================================================
-      // MOBILE SWIPE GESTURES (LEFT = NEXT CHAPTER, RIGHT = PREVIOUS CHAPTER)
-      // =========================================================================
-      let touchStartX = 0, touchStartY = 0, touchStartTime = 0;
-      document.addEventListener('touchstart', (e) => {
-        if (!e.touches || e.touches.length !== 1) return;
-        const target = e.target;
-        if (target.closest('input, textarea, [contenteditable="true"], .modal-backdrop.open, .chapter-drawer.open')) {
-          touchStartX = 0; return;
         }
-        touchStartX = e.touches[0].clientX;
-        touchStartY = e.touches[0].clientY;
-        touchStartTime = Date.now();
-      }, { passive: true });
+      });
 
-      document.addEventListener('touchend', (e) => {
-        if (!touchStartX || !e.changedTouches || !e.changedTouches[0]) return;
-        const dx = e.changedTouches[0].clientX - touchStartX;
-        const dy = e.changedTouches[0].clientY - touchStartY;
-        const dt = Date.now() - touchStartTime;
-        touchStartX = 0;
+      bgMusic.addEventListener('error', () => {
+        if (musicPlaying) startFallbackAmbientLoop();
+      });
 
-        // Trigger only on intentional horizontal swipe
-        if (dt < 600 && Math.abs(dx) > 65 && Math.abs(dx) > Math.abs(dy) * 1.6) {
-          if (dx < 0 && currentChapter < 20) goToChapter(currentChapter + 1);
-          else if (dx > 0 && currentChapter > 1) goToChapter(currentChapter - 1);
-        }
-      }, { passive: true });
-
-      // =========================================================================
-      // INITIALIZE ENGINE ON WINDOW LOAD
-      // =========================================================================
-      window.addEventListener('resize', () => { resizeCanvas(); initStars(); });
-      window.onload = function () {
-        resizeCanvas();
-        initStars();
-        requestAnimationFrame(animateCanvas);
-        goToChapter(1);
-        if (window.innerWidth < 640) {
-          setTimeout(() => showToast('👆 Swipe left or right anytime to switch chapters ✨'), 1400);
-        }
-      };
+      // Initialize arrival on Chapter 01
+      goToChapter(1);
     })();
   </script>
 </body>
