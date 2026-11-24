@@ -1,0 +1,2337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-S38X023WEE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-S38X023WEE', { send_page_view: false });
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>Her Little Universe — Complete 20-Chapter Birthday Journey</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400;1,600&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ==========================================================================
+       CORE COSMIC PASTEL FAIRYTALE THEME (UNIFIED ACROSS ALL 20 CHAPTERS)
+       ========================================================================== */
+    :root {
+      --bg-void: #0b0518;
+      --bg-deep: #140829;
+      --bg-chamber: #241046;
+      --pink-soft: #ffd6e7;
+      --pink-glow: #ffb6d9;
+      --pink-pastel: #ff9ec7;
+      --lavender-soft: #e6d8ff;
+      --lavender-mid: #c9b2ff;
+      --gold-warm: #ffe6a3;
+      --ink-plum: #341654;
+      --ch10-wash: rgba(255, 182, 217, 0);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: var(--bg-void);
+      font-family: 'Quicksand', sans-serif;
+      color: #ffffff;
+      user-select: none;
+      touch-action: manipulation;
+    }
+
+    .font-display { font-family: 'Cinzel Decorative', serif; }
+    .font-serif-elegant { font-family: 'Playfair Display', 'Cormorant Garamond', serif; }
+    .font-handwritten { font-family: 'Caveat', cursive; }
+
+    /* Master Cosmic Backdrop */
+    .universe-app {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      height: 100dvh;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 50% 34%, rgba(255, 214, 231, 0.28) 0%, rgba(182, 134, 240, 0.22) 40%, rgba(28, 12, 54, 0.9) 76%, #0b0518 100%),
+        linear-gradient(180deg, #0c051a 0%, #1b0c38 48%, #261047 100%);
+    }
+
+    #globalCanvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      pointer-events: none;
+      z-index: 3;
+    }
+
+    /* Dynamic Color Wash for Chapter 10 */
+    #ambientColorWash {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 2;
+      background: radial-gradient(circle at 50% 45%, var(--ch10-wash) 0%, transparent 74%);
+      transition: background 0.9s ease;
+      mix-blend-mode: screen;
+    }
+
+    .nebula-blob {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(72px);
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .nebula-pink {
+      top: 6%;
+      left: 5%;
+      width: clamp(240px, 44vw, 540px);
+      height: clamp(200px, 34vw, 420px);
+      background: radial-gradient(circle, rgba(255, 158, 199, 0.28) 0%, rgba(255, 158, 199, 0) 72%);
+      animation: nebulaDriftA 20s ease-in-out infinite alternate;
+    }
+
+    .nebula-lavender {
+      bottom: 6%;
+      right: 5%;
+      width: clamp(260px, 48vw, 580px);
+      height: clamp(220px, 38vw, 460px);
+      background: radial-gradient(circle, rgba(199, 155, 242, 0.28) 0%, rgba(199, 155, 242, 0) 72%);
+      animation: nebulaDriftB 24s ease-in-out infinite alternate;
+    }
+
+    @keyframes nebulaDriftA {
+      0% { transform: translate3d(-18px, -12px, 0) scale(0.95); }
+      100% { transform: translate3d(24px, 16px, 0) scale(1.07); }
+    }
+
+    @keyframes nebulaDriftB {
+      0% { transform: translate3d(20px, 14px, 0) scale(1.06); }
+      100% { transform: translate3d(-22px, -14px, 0) scale(0.95); }
+    }
+
+    /* ==========================================================================
+       SHARED TOP HUD, CHAPTER DRAWER & VIEW TRANSITIONS
+       ========================================================================== */
+    .hud-pill {
+      pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.44rem 0.9rem;
+      border-radius: 9999px;
+      background: rgba(17, 6, 34, 0.78);
+      border: 1px solid rgba(255, 214, 231, 0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      color: #ffd6e7;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .hud-pill:hover {
+      background: rgba(64, 26, 114, 0.88);
+      border-color: rgba(255, 230, 163, 0.72);
+      box-shadow: 0 0 18px rgba(201, 178, 255, 0.38);
+    }
+
+    .sound-bars {
+      display: inline-flex;
+      align-items: flex-end;
+      gap: 2px;
+      height: 11px;
+      width: 13px;
+    }
+
+    .sound-bars span {
+      display: block;
+      width: 2.5px;
+      background-color: #ffe6a3;
+      border-radius: 2px;
+      height: 4px;
+    }
+
+    .sound-bars.playing span:nth-child(1) { animation: eqBar 0.8s ease-in-out infinite alternate; }
+    .sound-bars.playing span:nth-child(2) { animation: eqBar 0.55s ease-in-out infinite alternate 0.2s; }
+    .sound-bars.playing span:nth-child(3) { animation: eqBar 0.9s ease-in-out infinite alternate 0.35s; }
+    .sound-bars.playing span:nth-child(4) { animation: eqBar 0.65s ease-in-out infinite alternate 0.1s; }
+    @keyframes eqBar { 0% { height: 3px; } 100% { height: 11px; } }
+
+    /* Chapter Switcher Drawer Modal */
+    .chapter-drawer {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      background: rgba(11, 5, 24, 0.82);
+      backdrop-filter: blur(14px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .chapter-drawer.open {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+    }
+
+    .chapter-grid-btn {
+      padding: 0.55rem 0.65rem;
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 214, 231, 0.25);
+      color: #f8f2ff;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: all 0.22s ease;
+    }
+
+    .chapter-grid-btn:hover {
+      border-color: #ffe6a3;
+      background: rgba(201, 178, 255, 0.22);
+      transform: translateY(-2px);
+    }
+
+    .chapter-grid-btn.active {
+      background: linear-gradient(135deg, #ffe6a3 0%, #ffb6d9 100%);
+      color: #1c0a38;
+      border-color: #ffffff;
+    }
+
+    /* Chapter Views */
+    .chapter-view {
+      position: absolute;
+      inset: 0;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-y: contain;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transform: scale(0.985);
+      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+                  visibility 0.6s ease;
+    }
+
+    .chapter-view.active {
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+
+    .chapter-inner {
+      position: relative;
+      z-index: 15;
+      width: 100%;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      padding: calc(3.85rem + env(safe-area-inset-top, 0px)) 0.9rem calc(1.15rem + env(safe-area-inset-bottom, 0px));
+      text-align: center;
+    }
+
+    /* Shared Buttons & Typography */
+    .name-gradient {
+      background: linear-gradient(120deg, #ffffff 8%, #ffe6a3 36%, #ff9ec7 68%, #e6d8ff 96%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: 0 0 30px rgba(255, 158, 199, 0.34);
+    }
+
+    .btn-nav {
+      pointer-events: auto;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      min-height: 44px;
+      padding: 0.68rem 1.25rem;
+      border-radius: 9999px;
+      font-size: 0.74rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #e6d8ff;
+      background: rgba(17, 6, 34, 0.78);
+      border: 1px solid rgba(201, 178, 255, 0.38);
+      backdrop-filter: blur(12px);
+      cursor: pointer;
+      transition: all 0.28s ease;
+    }
+
+    .btn-nav:hover {
+      background: rgba(109, 59, 184, 0.46);
+      border-color: rgba(255, 214, 231, 0.72);
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .btn-primary-glow {
+      pointer-events: auto;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      min-height: 46px;
+      padding: 0.78rem 1.65rem;
+      border-radius: 9999px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: #160a2c;
+      background: linear-gradient(135deg, #ffe6a3 0%, #ffd6e7 48%, #ffb6d9 100%);
+      border: 1.5px solid rgba(255, 255, 255, 0.88);
+      box-shadow: 0 0 24px rgba(255, 182, 217, 0.48), 0 0 46px rgba(201, 178, 255, 0.3);
+      cursor: pointer;
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+    }
+
+    .btn-primary-glow:hover:not(:disabled) {
+      transform: translateY(-2px) scale(1.035);
+      box-shadow: 0 0 36px rgba(255, 230, 163, 0.88), 0 0 66px rgba(255, 182, 217, 0.6);
+    }
+
+    .btn-primary-glow:disabled { opacity: 0.7; cursor: wait; }
+
+    .glass-panel {
+      background: linear-gradient(155deg, rgba(248, 242, 255, 0.16) 0%, rgba(44, 19, 84, 0.84) 55%, rgba(20, 8, 41, 0.94) 100%);
+      border: 1.5px solid rgba(255, 214, 231, 0.4);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 22px 54px rgba(10, 3, 22, 0.82), 0 0 34px rgba(255, 182, 217, 0.22);
+    }
+
+    .keepsake-cream-card {
+      background: linear-gradient(155deg, #fffafc 0%, #ffe6f0 48%, #efe5ff 100%);
+      border: 2px solid rgba(255, 230, 163, 0.94);
+      color: var(--ink-plum);
+      box-shadow: 0 24px 56px rgba(10, 3, 22, 0.86), 0 0 38px rgba(255, 230, 163, 0.52);
+    }
+
+    /* ==========================================================================
+       CHAPTER-SPECIFIC ANIMATIONS & COMPONENTS
+       ========================================================================== */
+    /* Ch 01 Star Gateway */
+    .gateway-wrapper {
+      position: relative; width: min(74vw, 400px); height: min(74vw, 400px);
+      display: flex; align-items: center; justify-content: center;
+      transform: scale(0.3) rotate(-20deg); opacity: 0;
+      transition: transform 1.8s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.2s ease;
+      margin: auto;
+    }
+    #chapter-1.arrived .gateway-wrapper { transform: scale(1) rotate(0deg); opacity: 1; }
+    .aura-ring-outer {
+      position: absolute; width: 92%; height: 92%; border-radius: 50%;
+      border: 1px dashed rgba(255, 214, 231, 0.4); animation: spinSlow 34s linear infinite; pointer-events: none;
+    }
+    .aura-ring-inner {
+      position: absolute; width: 72%; height: 72%; border-radius: 50%;
+      border: 1px solid rgba(255, 158, 199, 0.35); animation: spinReverse 24s linear infinite; pointer-events: none;
+    }
+    .star-gateway-svg {
+      width: 100%; height: 100%; overflow: visible;
+      filter: drop-shadow(0 0 20px rgba(255, 158, 199, 0.72));
+      animation: starBreath 5s ease-in-out infinite alternate; pointer-events: none;
+    }
+    @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes spinReverse { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+    @keyframes starBreath { 0% { transform: scale(0.96); } 100% { transform: scale(1.04); } }
+    .star-center-name { position: absolute; top: 51%; left: 50%; transform: translate(-50%, -50%); width: 68%; z-index: 12; }
+    .editable-name { cursor: text; border-bottom: 1px dashed rgba(255, 214, 231, 0.35); padding: 0 8px; border-radius: 8px; }
+    .editable-name:focus { outline: none; border-bottom-color: #ffe6a3; background: rgba(255, 214, 231, 0.1); }
+    .wish-star-btn { position: absolute; z-index: 22; width: 34px; height: 34px; background: transparent; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+    .wish-star-core { width: 10px; height: 10px; border-radius: 50%; background: #ffe6a3; box-shadow: 0 0 12px 4px rgba(255, 230, 163, 0.9); animation: twinkleCore 2.2s ease-in-out infinite alternate; }
+    @keyframes twinkleCore { 0% { transform: scale(0.8); opacity: 0.65; } 100% { transform: scale(1.25); opacity: 1; } }
+
+    .toast-banner {
+      position: fixed; bottom: 5.5rem; left: 50%; transform: translate(-50%, 14px); z-index: 75;
+      max-width: min(90vw, 440px); padding: 0.6rem 1.25rem; border-radius: 9999px;
+      background: rgba(22, 10, 44, 0.92); border: 1px solid rgba(255, 230, 163, 0.6);
+      color: #ffe6a3; font-size: 0.82rem; text-align: center; opacity: 0; pointer-events: none; transition: all 0.35s ease;
+    }
+    .toast-banner.show { opacity: 1; transform: translate(-50%, 0); }
+
+    /* Ch 02 Butterfly */
+    .magic-butterfly { position: fixed; top: 0; left: 0; width: 46px; height: 46px; z-index: 28; cursor: pointer; display: none; filter: drop-shadow(0 0 12px rgba(255, 230, 163, 0.85)); }
+    .bf-wing-l { transform-origin: 24px 24px; animation: flapL 0.32s ease-in-out infinite alternate; }
+    .bf-wing-r { transform-origin: 24px 24px; animation: flapR 0.32s ease-in-out infinite alternate; }
+    @keyframes flapL { 0% { transform: scaleX(1); } 100% { transform: scaleX(0.32); } }
+    @keyframes flapR { 0% { transform: scaleX(1); } 100% { transform: scaleX(0.32); } }
+
+    /* 3D Flip Utilities (Ch 03, 06, 09, 18) */
+    .perspective-box { perspective: 1200px; }
+    .flip-3d-inner { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1); cursor: pointer; }
+    .flip-3d-inner.is-flipped { transform: rotateY(180deg); }
+    .flip-face { position: absolute; inset: 0; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+    .flip-face-back { transform: rotateY(180deg); }
+
+    /* Candles (Ch 04 & Ch 12) */
+    .candle-unit { cursor: pointer; }
+    .candle-flame { transform-origin: center bottom; transform-box: fill-box; transition: opacity 0.35s ease, transform 0.35s ease; animation: flicker 1.25s ease-in-out infinite alternate; }
+    .candle-unit.out .candle-flame { opacity: 0; transform: scale(0.12) translateY(7px); animation: none; }
+    @keyframes flicker { 0% { transform: scale(0.95, 1.04) rotate(-2deg); } 100% { transform: scale(1.04, 0.96) rotate(2deg); } }
+
+    /* Ch 05 Envelope */
+    .env-box { position: relative; width: min(82vw, 340px); aspect-ratio: 1.48 / 1; cursor: pointer; filter: drop-shadow(0 20px 38px rgba(8,2,18,0.8)); }
+    .env-flap { position: absolute; top: 0; left: 0; width: 100%; height: 58%; z-index: 20; transform-origin: top center; transition: transform 0.7s ease; pointer-events: none; }
+    .env-box.opened .env-flap { transform: rotateX(176deg); z-index: 4; }
+    .env-sheet { position: absolute; left: 7%; right: 7%; bottom: 8%; height: 80%; border-radius: 10px; background: #fffdf9; z-index: 6; transform: translateY(6%); transition: transform 0.7s ease 0.15s; pointer-events: none; padding: 10px; }
+    .env-box.opened .env-sheet { transform: translateY(-42%); }
+
+    /* Ch 10 Color Orbs */
+    .color-orb {
+      width: clamp(58px, 13vw, 76px); height: clamp(58px, 13vw, 76px); border-radius: 9999px;
+      border: 2px solid rgba(255,255,255,0.75); cursor: pointer;
+      box-shadow: 0 10px 26px rgba(10,4,22,0.65), 0 0 24px var(--oglow), inset 5px 7px 14px rgba(255,255,255,0.85);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .color-orb:hover, .color-orb.active { transform: scale(1.15) translateY(-5px); box-shadow: 0 14px 36px rgba(10,4,22,0.75), 0 0 42px var(--oglow); }
+
+    /* Ch 11 Vinyl Turntable */
+    .vinyl-disc {
+      width: 170px; height: 170px; border-radius: 50%;
+      background: conic-gradient(from 25deg, #2a124d 0deg, #4b2382 40deg, #240e42 90deg, #5c2c96 145deg, #220d3d 200deg, #4e2585 260deg, #2a124d 360deg);
+      border: 2px solid rgba(255,214,231,0.5); display: flex; align-items: center; justify-content: center;
+      animation: spinSlow 7s linear infinite; animation-play-state: paused;
+    }
+    .vinyl-disc.spinning { animation-play-state: running; }
+
+    /* Ch 12 Rising Wish Orb */
+    .rising-wish-orb {
+      position: fixed; left: 50%; top: 64%; transform: translate(-50%, 0); z-index: 60;
+      padding: 0.55rem 1.35rem; border-radius: 9999px;
+      background: linear-gradient(135deg, #ffe6a3, #ffd6e7, #c9b2ff); color: #241046;
+      font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 700; font-size: 1.05rem;
+      box-shadow: 0 0 32px rgba(255, 230, 163, 0.95); opacity: 0; pointer-events: none;
+    }
+    .rising-wish-orb.soar { animation: soarWish 1.3s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+    @keyframes soarWish {
+      0% { opacity: 0; transform: translate(-50%, 20px) scale(0.85); }
+      25% { opacity: 1; transform: translate(-50%, -25px) scale(1.04); }
+      80% { opacity: 1; transform: translate(-50%, -175px) scale(0.9); }
+      100% { opacity: 0; transform: translate(-50%, -225px) scale(0.3); }
+    }
+
+    /* Ch 14 Machine Shake & Gears */
+    .machine-rig.working { animation: wobbleFast 0.22s ease-in-out infinite alternate; }
+    @keyframes wobbleFast { 0% { transform: rotate(-2deg) translateY(0); } 100% { transform: rotate(2deg) translateY(-4px); } }
+    .gear-spin { transform-origin: center; transform-box: fill-box; animation: spinSlow 9s linear infinite; }
+    .machine-rig.working .gear-spin { animation-duration: 0.65s; }
+
+    /* Ch 17 Chest & Ch 19 Gift Box */
+    .chest-lid { transform-origin: 170px 148px; transition: transform 0.72s cubic-bezier(0.34, 1.56, 0.64, 1); }
+    .chest-rig.open .chest-lid { transform: translateY(-46px) rotate(-14deg) scale(0.96, 0.75); }
+    .gift-rig.shaking { animation: wobbleFast 0.16s ease-in-out 4 alternate; }
+    .gift-ribbon { transition: opacity 0.45s ease, transform 0.45s ease; }
+    .gift-rig.untied .gift-ribbon { opacity: 0; transform: scale(1.25); }
+    .gift-lid { transition: transform 0.75s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.65s ease; }
+    .gift-rig.opened .gift-lid { transform: translateY(-76px) rotate(-16deg); opacity: 0; }
+
+    /* Polaroids (Ch 07 & Ch 16) */
+    .polaroid-item {
+      background: linear-gradient(180deg, #fffdf9, #fff5fa); border-radius: 10px; padding: 9px 9px 12px;
+      border: 1.5px solid rgba(255, 230, 163, 0.78); color: var(--ink-plum); cursor: pointer;
+      box-shadow: 0 14px 30px rgba(8,2,18,0.75); transition: transform 0.35s ease, box-shadow 0.35s ease;
+    }
+    .polaroid-item:hover { transform: translateY(-4px) scale(1.03); box-shadow: 0 20px 42px rgba(8,2,18,0.85), 0 0 28px rgba(255,230,163,0.45); }
+
+    /* Shared Modal Backdrop */
+    .modal-backdrop {
+      position: fixed; inset: 0; z-index: 70; background: rgba(12, 4, 26, 0.78); backdrop-filter: blur(12px);
+      display: flex; align-items: center; justify-content: center; padding: 1rem;
+      opacity: 0; visibility: hidden; pointer-events: none; transition: all 0.38s ease;
+    }
+    .modal-backdrop.open { opacity: 1; visibility: visible; pointer-events: auto; }
+
+    /* Shake Helper */
+    .shake-x { animation: shakeAnim 0.45s ease; }
+    @keyframes shakeAnim { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-7px)} 50%{transform:translateX(7px)} 75%{transform:translateX(-4px)} }
+
+    /* ==========================================================================
+       MOBILE-FIRST OPTIMIZATIONS (< 640px)
+       ========================================================================== */
+    @media (max-width: 639px) {
+      .hud-pill {
+        min-height: 38px;
+        padding: 0.42rem 0.78rem;
+        font-size: 0.65rem;
+        letter-spacing: 0.09em;
+      }
+
+      .gateway-wrapper {
+        width: min(74vw, 295px);
+        height: min(74vw, 295px);
+      }
+
+      .env-box {
+        width: min(84vw, 295px);
+      }
+
+      .vinyl-disc {
+        width: 132px;
+        height: 132px;
+      }
+
+      .color-orb {
+        width: 56px;
+        height: 56px;
+      }
+
+      .polaroid-item {
+        padding: 7px 7px 9px;
+      }
+
+      /* Prevent iOS Safari auto-zoom on text inputs */
+      input[type="text"], textarea {
+        font-size: 16px !important;
+      }
+
+      /* Native Bottom-Sheet Chapter Drawer on Mobile */
+      .chapter-drawer {
+        align-items: flex-end;
+        padding: 0;
+      }
+
+      .chapter-drawer > .glass-panel {
+        width: 100%;
+        max-height: 76dvh;
+        border-radius: 26px 26px 0 0;
+        padding-bottom: calc(1.25rem + env(safe-area-inset-bottom, 0px));
+      }
+
+      .chapter-grid-btn {
+        min-height: 44px;
+        padding: 0.65rem 0.75rem;
+        font-size: 0.75rem;
+      }
+
+      .toast-banner {
+        bottom: calc(4.8rem + env(safe-area-inset-bottom, 0px));
+        font-size: 0.76rem;
+        padding: 0.55rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="universe-app" aria-label="Her Little Universe — Complete 20-Chapter Birthday Journey">
+    <div class="nebula-blob nebula-pink"></div>
+    <div class="nebula-blob nebula-lavender"></div>
+    <div id="ambientColorWash"></div>
+    <canvas id="globalCanvas"></canvas>
+
+    <!-- SHARED TOP HUD BAR -->
+    <header class="fixed top-0 left-0 right-0 z-40 flex items-center justify-between gap-2 px-3 sm:px-7 py-2.5 sm:py-4 pointer-events-none" style="padding-top: calc(0.65rem + env(safe-area-inset-top, 0px));">
+      <button id="openChapterDrawerBtn" type="button" class="hud-pill" title="Jump to any Chapter (01–20)">
+        <span class="text-amber-200">&#10022;</span>
+        <span id="hudChapterLabel">CHAPTER 01 / 20</span>
+        <span class="opacity-70">&#9662;</span>
+      </button>
+
+      <button id="soundToggleBtn" type="button" class="hud-pill" aria-label="Toggle Background Music">
+        <span id="soundBars" class="sound-bars" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </span>
+        <span id="soundLabel">Sound Off</span>
+      </button>
+    </header>
+
+    <!-- =====================================================================
+         CHAPTER 01 — STAR GATEWAY
+         ===================================================================== -->
+    <section id="chapter-1" class="chapter-view active" data-chapter="1">
+      <button type="button" class="wish-star-btn" style="top:15%;left:7%" data-wish="✨ Wish #1: May your smiles always shine brighter than the stars."><span class="wish-star-core"></span></button>
+      <button type="button" class="wish-star-btn" style="top:17%;right:7%" data-wish="💫 Wish #2: May every new adventure bring you magic and joy."><span class="wish-star-core" style="animation-delay:.5s"></span></button>
+      <button type="button" class="wish-star-btn" style="bottom:27%;left:7%" data-wish="🌟 Wish #3: Never stop dreaming big—this whole universe roots for you."><span class="wish-star-core" style="animation-delay:1s"></span></button>
+      <button type="button" class="wish-star-btn" style="bottom:27%;right:7%" data-wish="✨ Wish #4: Wishing you endless laughter and unforgettable memories."><span class="wish-star-core" style="animation-delay:1.5s"></span></button>
+
+      <div class="chapter-inner">
+        <span class="px-4 py-1 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-amber-200 bg-white/5 border border-pink-200/25">
+          A SPECIAL BIRTHDAY JOURNEY
+        </span>
+
+        <div class="gateway-wrapper">
+          <div class="aura-ring-outer"></div>
+          <div class="aura-ring-inner"></div>
+          <svg class="star-gateway-svg" viewBox="0 0 400 400" fill="none">
+            <defs>
+              <linearGradient id="c1StarGrad" x1="40" y1="30" x2="360" y2="360" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stop-color="#ffe6a3" /><stop offset="50%" stop-color="#ff9ec7" /><stop offset="100%" stop-color="#c9b2ff" />
+              </linearGradient>
+              <radialGradient id="c1StarCore" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.32" /><stop offset="45%" stop-color="#ffe6a3" stop-opacity="0.14" /><stop offset="100%" stop-color="#140829" stop-opacity="0" />
+              </radialGradient>
+            </defs>
+            <circle cx="200" cy="200" r="145" fill="url(#c1StarCore)" />
+            <path d="M200 26 L247 138 L368 148 L276 227 L304 345 L200 282 L96 345 L124 227 L32 148 L153 138 Z" stroke="url(#c1StarGrad)" stroke-width="3" stroke-linejoin="round" />
+            <path d="M200 54 L238 147 L338 155 L262 220 L285 318 L200 266 L115 318 L138 220 L62 155 L162 147 Z" stroke="#ffffff" stroke-width="1.3" stroke-opacity="0.78" stroke-linejoin="round" />
+          </svg>
+          <div class="star-center-name">
+            <h1 class="font-display text-2xl sm:text-4xl font-bold tracking-wider drop-shadow-[0_4px_24px_rgba(8,3,20,0.95)]">
+              <span id="p1NameEditable" class="name-gradient editable-name" contenteditable="true" spellcheck="false" title="Click to personalize name">[HER NAME]</span>
+            </h1>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center gap-3 max-w-xl mx-auto">
+          <p class="font-serif-elegant italic text-lg sm:text-xl text-pink-100/95">
+            Somewhere among the stars, a little surprise was made just for you.
+          </p>
+          <button type="button" class="btn-primary-glow" data-goto="2">&#10022; Begin the Journey &rarr;</button>
+          <p class="text-[10px] sm:text-xs tracking-[0.18em] uppercase text-purple-200/70">Tap the glowing stars for hidden wishes</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 02 — WELCOME TO THE ADVENTURE
+         ===================================================================== -->
+    <section id="chapter-2" class="chapter-view" data-chapter="2">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1 max-w-3xl mx-auto">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-amber-200 bg-white/5 border border-pink-200/25">YOU MADE IT!</span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">Welcome to Your Little World, <span class="name-gradient js-her-name">[HER NAME]</span></h2>
+          <p class="font-serif-elegant italic text-base sm:text-xl text-pink-100/90">There are little surprises waiting around every corner.</p>
+        </div>
+
+        <div class="w-full max-w-2xl mx-auto px-2">
+          <svg viewBox="0 0 900 420" fill="none" class="w-full h-auto max-h-[42vh] overflow-visible">
+            <defs>
+              <radialGradient id="c2HGlow" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff" stop-opacity=".9"/><stop offset="40%" stop-color="#ffe6a3" stop-opacity=".55"/><stop offset="100%" stop-color="#6d3bb8" stop-opacity="0"/></radialGradient>
+              <radialGradient id="c2Meadow" cx="50%" cy="32%" r="62%"><stop offset="0%" stop-color="#ffd6e7"/><stop offset="45%" stop-color="#c9b2ff"/><stop offset="100%" stop-color="#2e1359"/></radialGradient>
+              <linearGradient id="c2Rock" x1="450" y1="190" x2="450" y2="410" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#4c2487"/><stop offset="100%" stop-color="#0e051f"/></linearGradient>
+              <linearGradient id="c2Path" x1="450" y1="145" x2="450" y2="260" gradientUnits="userSpaceOnUse"><stop offset="0%" stop-color="#fff"/><stop offset="45%" stop-color="#ffe6a3"/><stop offset="100%" stop-color="#ff9ec7"/></linearGradient>
+            </defs>
+            <circle cx="450" cy="135" r="110" fill="url(#c2HGlow)" />
+            <polygon points="120,206 780,206 680,316 550,388 450,420 330,384 210,314" fill="url(#c2Rock)" />
+            <ellipse cx="450" cy="200" rx="336" ry="62" fill="url(#c2Meadow)" />
+            <path d="M416 146 C416 108, 484 108, 484 146" stroke="#ffe6a3" stroke-width="3.5" stroke-linecap="round" />
+            <circle cx="450" cy="128" r="4.5" fill="#fff" />
+            <path d="M450 144 C444 162, 466 176, 446 196 C424 218, 468 236, 442 262 L478 262 C496 236, 448 218, 462 196 C476 176, 456 162, 453 144 Z" fill="url(#c2Path)" />
+          </svg>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <p class="text-xs sm:text-sm text-purple-100/85 px-4 py-1.5 rounded-full bg-[#0b0518]/50 border border-white/10">Take your time, explore and enjoy every little moment.</p>
+          <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+            <button type="button" class="btn-nav" data-goto="1">&larr; Previous</button>
+            <button type="button" class="btn-primary-glow" data-goto="3">&#10022; Explore Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 03 — GUESS WHAT DAY?
+         ===================================================================== -->
+    <section id="chapter-3" class="chapter-view" data-chapter="3">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-amber-200 bg-white/5 border border-pink-200/25">A LITTLE MYSTERY</span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">Guess What Day?</h2>
+          <p class="font-serif-elegant italic text-base sm:text-xl text-pink-100/90">Something special is waiting for you.</p>
+        </div>
+
+        <div class="perspective-box w-[235px] h-[255px] my-2">
+          <div id="c3CalendarFlip" class="flip-3d-inner">
+            <div class="flip-face glass-panel">
+              <div class="w-full py-3 bg-pink-300/25 border-b border-pink-200/25 text-xs font-bold tracking-[0.28em] uppercase text-pink-100">SECRET DATE</div>
+              <div class="flex-1 flex flex-col items-center justify-center">
+                <span class="font-display text-7xl font-bold name-gradient">?</span>
+                <span class="text-[10px] uppercase tracking-[0.22em] text-purple-200/75 mt-2">Choose a date below</span>
+              </div>
+            </div>
+            <div class="flip-face flip-face-back keepsake-cream-card">
+              <div class="w-full py-3 bg-amber-300/35 border-b border-amber-400/40 text-xs font-bold tracking-[0.3em] uppercase text-purple-900">JANUARY</div>
+              <div class="flex-1 flex flex-col items-center justify-center">
+                <span class="text-[11px] font-bold tracking-[0.24em] uppercase text-pink-600">FRIDAY</span>
+                <span class="font-display text-6xl font-bold text-purple-950 leading-none my-1">01</span>
+                <span class="font-display text-lg font-bold tracking-[0.22em] text-amber-600">2027</span>
+                <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-purple-800 mt-1">&#10022; January 1, 2027 &#10022;</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center gap-2.5 max-w-xl mx-auto">
+          <p class="font-serif-elegant text-base sm:text-xl text-pink-100 font-semibold">Which day is the beginning of this little celebration?</p>
+          <div class="flex flex-wrap justify-center gap-2.5">
+            <button type="button" class="btn-nav c3-opt" data-date="January 1">&#10022; January 1</button>
+            <button type="button" class="btn-nav c3-opt" data-date="January 10">&#10022; January 10</button>
+            <button type="button" class="btn-nav c3-opt" data-date="January 23">&#10022; January 23</button>
+          </div>
+          <p id="c3Feedback" class="text-xs sm:text-sm text-purple-200/90 min-h-[22px]">Tap a date card to unlock the calendar's secret...</p>
+          <div class="flex flex-wrap justify-center gap-3 sm:gap-5 pt-1">
+            <button type="button" class="btn-nav" data-goto="2">&larr; Previous</button>
+            <button type="button" class="btn-primary-glow" data-goto="4">Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 04 — HAPPY BIRTHDAY! (5 CANDLES CAKE)
+         ===================================================================== -->
+    <section id="chapter-4" class="chapter-view" data-chapter="4">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-amber-200 bg-white/5 border border-pink-200/25">TODAY IS YOUR SPECIAL DAY</span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">HAPPY BIRTHDAY, <span class="name-gradient js-her-name">[HER NAME]</span>!</h2>
+          <p class="font-serif-elegant italic text-base sm:text-lg text-pink-100/95">Wishing you a day filled with happiness, laughter and wonderful surprises.</p>
+        </div>
+
+        <div class="w-full max-w-[330px] mx-auto">
+          <svg viewBox="0 0 420 375" fill="none" class="w-full h-auto max-h-[38vh] overflow-visible drop-shadow-[0_18px_32px_rgba(10,4,22,0.85)]">
+            <ellipse cx="210" cy="360" rx="92" ry="11" fill="#f3c677" />
+            <path d="M188 318 L174 356 L246 356 L232 318 Z" fill="#e2a538" />
+            <ellipse cx="210" cy="310" rx="154" ry="20" fill="#fff0f6" stroke="#ffe6a3" stroke-width="2" />
+            <path d="M78 218 L78 296 C78 312, 342 312, 342 296 L342 218 Z" fill="#b48cf7" />
+            <ellipse cx="210" cy="218" rx="132" ry="22" fill="#e6d8ff" />
+            <path d="M78 218 C78 234, 342 234, 342 218 C342 236, 330 254, 318 254 C306 254, 302 236, 288 236 C274 236, 270 260, 256 260 C242 260, 238 238, 222 238 C206 238, 202 264, 188 264 C174 264, 170 238, 154 238 C138 238, 134 258, 120 258 C106 258, 100 236, 78 218 Z" fill="#ffd6e7" />
+            <path d="M116 138 L116 204 C116 218, 304 218, 304 204 L304 138 Z" fill="#ff9ec7" />
+            <ellipse cx="210" cy="138" rx="94" ry="17" fill="#fff0f6" />
+            <path d="M116 138 C116 151, 304 151, 304 138 C304 154, 290 168, 278 168 C266 168, 260 152, 244 152 C228 152, 224 174, 210 174 C196 174, 192 152, 176 152 C160 152, 154 168, 142 168 C130 168, 120 154, 116 138 Z" fill="#e6d8ff" />
+            <g id="c4Candles">
+              <g class="candle-unit c4-candle" data-i="0" transform="translate(148,86)"><rect x="-5" y="14" width="10" height="38" rx="4" fill="#fff6fb" stroke="#ff9ec7" stroke-width="1.5"/><line x1="0" y1="14" x2="0" y2="8" stroke="#341654" stroke-width="1.6"/><g class="candle-flame"><circle cx="0" cy="0" r="14" fill="#ffe6a3" fill-opacity=".4"/><path d="M0 -11 C5 -4,6 2,0 7 C-6 2,-5 -4,0 -11 Z" fill="#ff9e44"/><path d="M0 -6 C2.5 -2,3 2,0 5 C-3 2,-2.5 -2,0 -6 Z" fill="#fff"/></g></g>
+              <g class="candle-unit c4-candle" data-i="1" transform="translate(179,80)"><rect x="-5" y="14" width="10" height="40" rx="4" fill="#fff6fb" stroke="#c9b2ff" stroke-width="1.5"/><line x1="0" y1="14" x2="0" y2="8" stroke="#341654" stroke-width="1.6"/><g class="candle-flame"><circle cx="0" cy="0" r="14" fill="#ffe6a3" fill-opacity=".4"/><path d="M0 -11 C5 -4,6 2,0 7 C-6 2,-5 -4,0 -11 Z" fill="#ff9e44"/><path d="M0 -6 C2.5 -2,3 2,0 5 C-3 2,-2.5 -2,0 -6 Z" fill="#fff"/></g></g>
+              <g class="candle-unit c4-candle" data-i="2" transform="translate(210,75)"><rect x="-5.5" y="14" width="11" height="43" rx="4.5" fill="#fff6fb" stroke="#f3c677" stroke-width="1.6"/><line x1="0" y1="14" x2="0" y2="8" stroke="#341654" stroke-width="1.6"/><g class="candle-flame"><circle cx="0" cy="0" r="16" fill="#ffe6a3" fill-opacity=".45"/><path d="M0 -12 C5.5 -4.5,6.5 2,0 7.5 C-6.5 2,-5.5 -4.5,0 -12 Z" fill="#ff9e44"/><path d="M0 -6.5 C2.8 -2,3.2 2,0 5.2 C-3.2 2,-2.8 -2,0 -6.5 Z" fill="#fff"/></g></g>
+              <g class="candle-unit c4-candle" data-i="3" transform="translate(241,80)"><rect x="-5" y="14" width="10" height="40" rx="4" fill="#fff6fb" stroke="#c9b2ff" stroke-width="1.5"/><line x1="0" y1="14" x2="0" y2="8" stroke="#341654" stroke-width="1.6"/><g class="candle-flame"><circle cx="0" cy="0" r="14" fill="#ffe6a3" fill-opacity=".4"/><path d="M0 -11 C5 -4,6 2,0 7 C-6 2,-5 -4,0 -11 Z" fill="#ff9e44"/><path d="M0 -6 C2.5 -2,3 2,0 5 C-3 2,-2.5 -2,0 -6 Z" fill="#fff"/></g></g>
+              <g class="candle-unit c4-candle" data-i="4" transform="translate(272,86)"><rect x="-5" y="14" width="10" height="38" rx="4" fill="#fff6fb" stroke="#ff9ec7" stroke-width="1.5"/><line x1="0" y1="14" x2="0" y2="8" stroke="#341654" stroke-width="1.6"/><g class="candle-flame"><circle cx="0" cy="0" r="14" fill="#ffe6a3" fill-opacity=".4"/><path d="M0 -11 C5 -4,6 2,0 7 C-6 2,-5 -4,0 -11 Z" fill="#ff9e44"/><path d="M0 -6 C2.5 -2,3 2,0 5 C-3 2,-2.5 -2,0 -6 Z" fill="#fff"/></g></g>
+            </g>
+          </svg>
+        </div>
+
+        <p id="c4WishBanner" class="hidden font-serif-elegant italic text-lg sm:text-xl text-amber-200 px-4 py-2 rounded-2xl glass-panel">
+          May every wish you made today come true, <span class="js-her-name">[HER NAME]</span>! &#10024;
+        </p>
+
+        <div class="flex flex-col items-center gap-2.5">
+          <div class="flex flex-wrap justify-center gap-2.5">
+            <button id="c4BlowBtn" type="button" class="btn-nav border-pink-300/50 text-pink-100">&#128168; Blow Out Candles</button>
+            <button id="c4CelebrateBtn" type="button" class="btn-primary-glow">&#127881; Celebrate!</button>
+          </div>
+          <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+            <button type="button" class="btn-nav" data-goto="3">&larr; Previous</button>
+            <button type="button" class="btn-nav border-amber-200/50 text-amber-200" data-goto="5">Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 05 — A BIRTHDAY LETTER
+         ===================================================================== -->
+    <section id="chapter-5" class="chapter-view" data-chapter="5">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.3em] uppercase text-amber-200 bg-white/5 border border-pink-200/25">A LITTLE NOTE FOR YOU</span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">A Birthday Letter</h2>
+          <p class="font-serif-elegant italic text-base sm:text-xl text-pink-100/90">Some wishes are better written than spoken.</p>
+        </div>
+
+        <div class="flex flex-col items-center gap-5">
+          <div id="c5Envelope" class="env-box" role="button" tabindex="0">
+            <div class="absolute inset-0 rounded-2xl bg-gradient-to-b from-pink-50 to-pink-200 border border-amber-300"></div>
+            <div class="env-sheet text-center text-purple-900">
+              <span class="text-[10px] tracking-[0.22em] uppercase text-purple-500 font-bold">&#10022; For You &#10022;</span>
+              <p class="font-handwritten text-2xl mt-1">Dear <span class="js-her-name">[HER NAME]</span>,</p>
+            </div>
+            <svg class="absolute inset-0 w-full h-full z-10 pointer-events-none rounded-2xl" viewBox="0 0 400 270" preserveAspectRatio="none">
+              <polygon points="0,0 200,145 0,270" fill="#f8cde1" />
+              <polygon points="400,0 200,145 400,270" fill="#f8cde1" />
+              <polygon points="0,270 200,126 400,270" fill="#fce0ec" />
+              <rect x="10" y="10" width="380" height="250" rx="10" fill="none" stroke="#e3b664" stroke-width="1.6" />
+            </svg>
+            <div class="env-flap">
+              <svg class="w-full h-full block" viewBox="0 0 400 156" preserveAspectRatio="none">
+                <path d="M4 0 L396 0 L200 150 L0 4 Z" fill="#fad3e5" />
+                <path d="M12 6 L388 6 L200 142 Z" fill="none" stroke="#e3b664" stroke-width="1.3" />
+              </svg>
+            </div>
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-14 h-14 rounded-full bg-purple-600 border-2 border-purple-200 z-30 flex items-center justify-center shadow-lg">
+              <span class="text-amber-200 text-xl">&#10022;</span>
+            </div>
+          </div>
+          <button id="c5OpenBtn" type="button" class="btn-primary-glow">&#10022; Open Your Letter &#10022;</button>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+          <button type="button" class="btn-nav" data-goto="4">&larr; Previous</button>
+          <button type="button" class="btn-nav border-amber-200/50 text-amber-200" data-goto="6">Next &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 06 — 10 LITTLE THINGS
+         ===================================================================== -->
+    <section id="chapter-6" class="chapter-view" data-chapter="6">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-amber-200 bg-white/5 border border-pink-200/25">JUST FOR <span class="js-her-name">[HER NAME]</span> &bull; <span id="c6Count">0 / 10</span></span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">10 Little Things</h2>
+          <p class="font-serif-elegant italic text-sm sm:text-lg text-pink-100/90">Tap each floating card to reveal a little reminder made for you.</p>
+        </div>
+
+        <div id="c6Grid" class="w-full max-w-5xl grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3.5 my-2"></div>
+
+        <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+          <button type="button" class="btn-nav" data-goto="5">&larr; Previous</button>
+          <button id="c6FlipAll" type="button" class="btn-nav border-pink-300/45 text-pink-200">&#10022; Flip All</button>
+          <button type="button" class="btn-primary-glow" data-goto="7">Next &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 07 — SMILE COLLECTION
+         ===================================================================== -->
+    <section id="chapter-7" class="chapter-view" data-chapter="7">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-amber-200 bg-white/5 border border-pink-200/25">SMILE COLLECTION &bull; <span id="c7Count">0 / 6</span></span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">A little collection of happy moments</h2>
+          <p class="font-serif-elegant italic text-sm sm:text-lg text-pink-100/90">Tap any Polaroid frame to reveal a sweet note underneath.</p>
+        </div>
+
+        <div id="c7Grid" class="w-full max-w-4xl grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-4 my-2"></div>
+
+        <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+          <button type="button" class="btn-nav" data-goto="6">&larr; Previous</button>
+          <button type="button" class="btn-primary-glow" data-goto="8">Next &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 08 — LITTLE MOMENTS (GLOWING 5-CHECKPOINT TIMELINE)
+         ===================================================================== -->
+    <section id="chapter-8" class="chapter-view" data-chapter="8">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-amber-200 bg-white/5 border border-pink-200/25">FOR <span class="js-her-name">[HER NAME]</span> &bull; <span id="c8Count">0 / 5 EXPLORED</span></span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">Little Moments</h2>
+          <p class="font-serif-elegant italic text-base sm:text-xl text-pink-100/90">Follow the glowing starlight timeline and tap each orb.</p>
+        </div>
+
+        <div id="c8Timeline" class="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 my-3"></div>
+
+        <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+          <button type="button" class="btn-nav" data-goto="7">&larr; Previous</button>
+          <button id="c8RevealAll" type="button" class="btn-nav border-pink-300/45 text-pink-200">&#10022; Reveal All</button>
+          <button type="button" class="btn-primary-glow" data-goto="9">Next &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 09 — A FEW NICE WORDS (KEEPSAKE CARD BOX + 14 CARDS)
+         ===================================================================== -->
+    <section id="chapter-9" class="chapter-view" data-chapter="9">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-amber-200 bg-white/5 border border-pink-200/25"><span id="c9Count">0 / 14 CARDS DISCOVERED</span></span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">A Few Nice Words</h2>
+          <p class="font-serif-elegant italic text-base sm:text-xl text-pink-100/90">Open the magical keepsake box for uplifting reminders.</p>
+        </div>
+
+        <div class="perspective-box w-full max-w-md min-h-[250px] flex items-center justify-center my-2">
+          <div id="c9Card3D" class="flip-3d-inner w-[min(90vw,420px)] h-[240px]">
+            <div class="flip-face glass-panel p-6">
+              <div class="w-16 h-16 rounded-full bg-gradient-to-br from-amber-200 to-pink-300 flex items-center justify-center text-3xl shadow-lg mb-3">&#127873;</div>
+              <p class="font-display text-lg text-amber-200">Magical Keepsake Box</p>
+              <p class="text-xs text-pink-100/80 mt-1">Tap "Open a Random Card" below</p>
+            </div>
+            <div class="flip-face flip-face-back keepsake-cream-card p-6 justify-between">
+              <span id="c9Badge" class="px-3 py-0.5 rounded-full text-[11px] font-bold tracking-[0.18em] uppercase bg-purple-900/10 text-purple-900 border border-amber-500/40">&#10022; Card #01 of 14 &#10022;</span>
+              <p id="c9Quote" class="font-serif-elegant text-2xl font-bold text-purple-950 leading-snug">“You have your own kind of magic.”</p>
+              <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-purple-800/65">Tap card or button to shuffle</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <button id="c9ShuffleBtn" type="button" class="btn-primary-glow">&#10022; Open a Random Card</button>
+          <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+            <button type="button" class="btn-nav" data-goto="8">&larr; Previous</button>
+            <button type="button" class="btn-nav border-amber-200/50 text-amber-200" data-goto="10">Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 10 — YOUR COLORFUL WORLD (7 GLOWING COLOR ORBS)
+         ===================================================================== -->
+    <section id="chapter-10" class="chapter-view" data-chapter="10">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-amber-200 bg-white/5 border border-pink-200/25"><span id="c10Count">0 / 7 COLORS AWAKENED</span></span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">Your Colorful World</h2>
+          <p class="font-serif-elegant italic text-base sm:text-xl text-pink-100/90">Touch any glowing orb to paint the sky with its special wish.</p>
+        </div>
+
+        <div class="flex flex-col items-center gap-5 w-full max-w-4xl my-2">
+          <div id="c10Orbs" class="flex flex-wrap items-center justify-center gap-3.5 sm:gap-5"></div>
+          <div id="c10Card" class="glass-panel rounded-3xl p-5 sm:p-6 w-[min(92vw,520px)]">
+            <span id="c10Tag" class="inline-block px-3 py-0.5 rounded-full text-[11px] font-bold tracking-[0.18em] uppercase bg-white/10 text-amber-200 mb-2">&#10022; Choose a Glowing Orb &#10022;</span>
+            <h3 id="c10Title" class="font-serif-elegant text-2xl sm:text-3xl font-bold text-white">Seven Colors of Joy</h3>
+            <p id="c10Wish" class="text-sm sm:text-base text-pink-100/90 mt-1.5">Tap Pink, Purple, Blue, Yellow, Green, Orange, or White above.</p>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center gap-2.5">
+          <p class="font-serif-elegant italic text-lg sm:text-xl text-amber-200">“May your world always stay colourful.”</p>
+          <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+            <button type="button" class="btn-nav" data-goto="9">&larr; Previous</button>
+            <button type="button" class="btn-primary-glow" data-goto="11">Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 11 — MUSIC CORNER (3D TURNTABLE & 3 SAMPLE TRACK CARDS)
+         ===================================================================== -->
+    <section id="chapter-11" class="chapter-view" data-chapter="11">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-amber-200 bg-white/5 border border-pink-200/25">MELODY ROOM FOR <span class="js-her-name">[HER NAME]</span></span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">Music Corner</h2>
+        </div>
+
+        <div class="glass-panel rounded-3xl p-5 w-[min(94vw,620px)] flex flex-col sm:flex-row items-center gap-5 my-2">
+          <div id="c11Vinyl" class="vinyl-disc shrink-0">
+            <div class="w-16 h-16 rounded-full bg-gradient-to-br from-pink-200 via-purple-200 to-amber-200 border-2 border-white flex flex-col items-center justify-center text-purple-950 font-bold text-[8px]">
+              <span id="c11VinylCode">TRACK 01</span>
+              <span class="w-2.5 h-2.5 rounded-full bg-amber-400 border border-purple-950 my-0.5"></span>
+              <span>33 RPM</span>
+            </div>
+          </div>
+          <div class="flex-1 w-full text-center sm:text-left flex flex-col gap-2.5">
+            <div>
+              <h3 id="c11TrackTitle" class="font-display text-base sm:text-lg font-bold text-white">TRACK 01 — ADD MUSIC HERE</h3>
+              <p class="text-xs text-pink-200/85">ADD AUDIO FILE HERE &bull; Pastel Vinyl Edition</p>
+            </div>
+            <div id="c11Wave" class="flex items-end justify-center sm:justify-start gap-1 h-8 px-2 py-1 rounded-xl bg-[#140829]/60"></div>
+            <div class="w-full h-2 rounded-full bg-white/15 overflow-hidden">
+              <div id="c11Progress" class="h-full w-0 bg-gradient-to-r from-pink-300 via-purple-200 to-amber-200 transition-all"></div>
+            </div>
+            <div class="flex items-center justify-center sm:justify-start gap-3">
+              <button id="c11PrevTrack" type="button" class="btn-nav px-3 py-2 text-xs">&#9198;</button>
+              <button id="c11PlayPause" type="button" class="btn-primary-glow px-5 py-2 text-xs">&#9654; Play</button>
+              <button id="c11NextTrack" type="button" class="btn-nav px-3 py-2 text-xs">&#9197;</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="c11TracksGrid" class="w-full max-w-3xl grid grid-cols-1 sm:grid-cols-3 gap-3 my-1"></div>
+
+        <div class="flex flex-col items-center gap-2.5">
+          <p class="font-serif-elegant italic text-base sm:text-lg text-pink-100">“Sometimes, a little music makes everything better.”</p>
+          <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+            <button type="button" class="btn-nav" data-goto="10">&larr; Previous</button>
+            <button type="button" class="btn-primary-glow" data-goto="12">Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 12 — A CAKE JUST FOR YOU (TYPE A WISH + 3 CANDLES)
+         ===================================================================== -->
+    <section id="chapter-12" class="chapter-view" data-chapter="12">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-amber-200 bg-white/5 border border-pink-200/25">SWEET BIRTHDAY MAGIC FOR <span class="js-her-name">[HER NAME]</span></span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">A Cake Just for You</h2>
+        </div>
+
+        <div class="w-full max-w-[310px] mx-auto">
+          <svg viewBox="0 0 420 375" fill="none" class="w-full h-auto max-h-[34vh] overflow-visible">
+            <ellipse cx="210" cy="360" rx="92" ry="11" fill="#f5b7c8" />
+            <path d="M188 318 L174 356 L246 356 L232 318 Z" fill="#d493a6" />
+            <ellipse cx="210" cy="310" rx="154" ry="20" fill="#fff5f9" stroke="#ffe6a3" stroke-width="2" />
+            <path d="M78 218 L78 296 C78 312, 342 312, 342 296 L342 218 Z" fill="#c9b2ff" />
+            <ellipse cx="210" cy="218" rx="132" ry="22" fill="#f8f2ff" />
+            <path d="M118 138 L118 204 C118 218, 302 218, 302 204 L302 138 Z" fill="#ffb6d9" />
+            <ellipse cx="210" cy="138" rx="92" ry="17" fill="#fff5f9" />
+            <g id="c12Candles">
+              <g class="candle-unit c12-candle" data-i="0" transform="translate(166,80)"><rect x="-6" y="14" width="12" height="44" rx="5" fill="#fff8fc" stroke="#ffb6d9" stroke-width="2"/><line x1="0" y1="14" x2="0" y2="7" stroke="#341654" stroke-width="1.8"/><g class="candle-flame"><circle cx="0" cy="0" r="16" fill="#ffe6a3" fill-opacity=".45"/><path d="M0 -13 C6 -5,7 2,0 8 C-7 2,-6 -5,0 -13 Z" fill="#ffaa5b"/><path d="M0 -7 C3 -2,3.5 2,0 5.5 C-3.5 2,-3 -2,0 -7 Z" fill="#fff"/></g></g>
+              <g class="candle-unit c12-candle" data-i="1" transform="translate(210,72)"><rect x="-6.5" y="14" width="13" height="50" rx="5.5" fill="#fff8fc" stroke="#ffe6a3" stroke-width="2"/><line x1="0" y1="14" x2="0" y2="7" stroke="#341654" stroke-width="1.8"/><g class="candle-flame"><circle cx="0" cy="-1" r="18" fill="#ffe6a3" fill-opacity=".5"/><path d="M0 -14.5 C6.5 -5.5,7.5 2,0 8.5 C-7.5 2,-6.5 -5.5,0 -14.5 Z" fill="#ffaa5b"/><path d="M0 -8 C3.2 -2,3.8 2,0 6 C-3.8 2,-3.2 -2,0 -8 Z" fill="#fff"/></g></g>
+              <g class="candle-unit c12-candle" data-i="2" transform="translate(254,80)"><rect x="-6" y="14" width="12" height="44" rx="5" fill="#fff8fc" stroke="#c9b2ff" stroke-width="2"/><line x1="0" y1="14" x2="0" y2="7" stroke="#341654" stroke-width="1.8"/><g class="candle-flame"><circle cx="0" cy="0" r="16" fill="#ffe6a3" fill-opacity=".45"/><path d="M0 -13 C6 -5,7 2,0 8 C-7 2,-6 -5,0 -13 Z" fill="#ffaa5b"/><path d="M0 -7 C3 -2,3.5 2,0 5.5 C-3.5 2,-3 -2,0 -7 Z" fill="#fff"/></g></g>
+            </g>
+          </svg>
+        </div>
+
+        <div id="c12WishResult" class="hidden glass-panel rounded-2xl px-5 py-3 max-w-lg">
+          <p class="font-display text-lg sm:text-xl font-bold text-amber-200">“May all your beautiful wishes come true!”</p>
+          <div class="inline-flex items-center gap-2 mt-1.5 px-3 py-1 rounded-full bg-white/10 text-xs text-pink-100">
+            <span class="font-bold text-amber-200">Your Wish ✨:</span>
+            <span id="c12SavedWish" class="italic"></span>
+            <button id="c12PrivacyBtn" type="button" class="text-amber-200 underline ml-1 cursor-pointer">Hide</button>
+          </div>
+        </div>
+
+        <div class="flex flex-col items-center gap-2.5 w-full max-w-lg">
+          <div id="c12InputWrap" class="w-full">
+            <input id="c12WishInput" type="text" maxlength="120" placeholder="Type your secret birthday wish here..." class="w-full px-5 py-2.5 rounded-full bg-[#1a0b36]/80 border border-pink-200/45 text-white text-center text-sm outline-none focus:border-amber-200" style="user-select:text" />
+            <p class="text-[11px] text-purple-200/75 mt-1">Your wish stays private between you &amp; the stars &#10024;</p>
+          </div>
+          <div class="flex flex-wrap justify-center gap-2.5">
+            <button id="c12BlowBtn" type="button" class="btn-primary-glow">&#10024; Make a Wish &amp; Blow the Candles</button>
+            <button id="c12ResetBtn" type="button" class="btn-nav border-amber-200/50 text-amber-200">&#128293; Reset Cake</button>
+          </div>
+          <div class="flex flex-wrap justify-center gap-3 sm:gap-5 pt-1">
+            <button type="button" class="btn-nav" data-goto="11">&larr; Previous</button>
+            <button type="button" class="btn-nav border-amber-200/50 text-amber-200" data-goto="13">Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 13 — MAKE A WISH (NIGHT SKY & WISHING FOUNTAIN)
+         ===================================================================== -->
+    <section id="chapter-13" class="chapter-view" data-chapter="13">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-amber-200 bg-white/5 border border-pink-200/25">STARLIGHT FOUNTAIN &bull; <span id="c13StarsCount">0 STARS SENT</span></span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">Make a Wish</h2>
+          <p class="font-serif-elegant italic text-base sm:text-xl text-pink-100/90">Whisper a wish into the fountain and watch it float into the sky.</p>
+        </div>
+
+        <div class="flex flex-col items-center gap-3 w-full max-w-lg my-1">
+          <div id="c13Card" class="glass-panel rounded-3xl p-5 w-full">
+            <div id="c13InputMode" class="flex flex-col items-center gap-3">
+              <textarea id="c13Textarea" rows="2" maxlength="160" placeholder="Write a little wish here..." class="w-full p-3 rounded-2xl bg-[#140829]/75 border border-pink-200/40 text-white text-center font-serif-elegant text-lg outline-none focus:border-amber-200 resize-none" style="user-select:text"></textarea>
+              <button id="c13SendBtn" type="button" class="btn-primary-glow">&#10022; Send My Wish &#10022;</button>
+            </div>
+            <div id="c13SentMode" class="hidden flex-col items-center gap-3 py-2">
+              <p class="font-serif-elegant italic text-xl sm:text-2xl text-amber-200">“May your wish find its way to something beautiful.”</p>
+              <button id="c13ResetBtn" type="button" class="btn-nav border-amber-200/50 text-amber-200">&#10227; Reset &amp; Write Another Wish</button>
+            </div>
+          </div>
+
+          <!-- Pastel Wishing Fountain SVG -->
+          <svg viewBox="0 0 420 180" fill="none" class="w-full max-w-[340px] h-auto">
+            <ellipse cx="210" cy="168" rx="150" ry="10" fill="#0d041c" opacity="0.7" />
+            <path d="M168 134 L152 166 L268 166 L252 134 Z" fill="#e6d8ff" stroke="#ffe6a3" stroke-width="1.5" />
+            <ellipse cx="210" cy="112" rx="140" ry="22" fill="#ffd6e7" stroke="#ffe6a3" stroke-width="1.8" />
+            <ellipse cx="210" cy="112" rx="126" ry="16" fill="#ffe6a3" fill-opacity="0.45" />
+            <path d="M196 68 L190 112 L230 112 L224 68 Z" fill="#e6d8ff" stroke="#ffe6a3" stroke-width="1.4" />
+            <ellipse cx="210" cy="66" rx="70" ry="12" fill="#ffd6e7" stroke="#ffe6a3" stroke-width="1.6" />
+            <polygon points="210,18 214,29 226,30 217,37 220,48 210,41 200,48 203,37 194,30 206,29" fill="#ffe6a3" />
+            <path d="M204 42 C180 46, 166 56, 162 66 M216 42 C240 46, 254 56, 258 66 M146 68 C118 76, 104 94, 102 110 M274 68 C302 76, 316 94, 318 110" stroke="#ffffff" stroke-width="2" stroke-dasharray="6 5" stroke-linecap="round" />
+          </svg>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+          <button type="button" class="btn-nav" data-goto="12">&larr; Previous</button>
+          <button type="button" class="btn-primary-glow" data-goto="14">Next &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 14 — HAPPINESS GENERATOR (3D CAPSULE MACHINE + 24 MESSAGES)
+         ===================================================================== -->
+    <section id="chapter-14" class="chapter-view" data-chapter="14">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-amber-200 bg-white/5 border border-pink-200/25"><span id="c14Count">0 / 24 CAPSULES OPENED</span></span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">Happiness Generator</h2>
+          <p class="font-serif-elegant italic text-base sm:text-xl text-pink-100/90">Spin the pastel capsule machine for a random positive message.</p>
+        </div>
+
+        <div id="c14Machine" class="machine-rig w-[240px] sm:w-[270px] cursor-pointer my-1">
+          <svg viewBox="0 0 320 380" fill="none" class="w-full h-auto max-h-[40vh] overflow-visible drop-shadow-[0_22px_38px_rgba(10,3,22,0.85)]">
+            <polygon points="160,4 164,15 176,16 167,23 170,34 160,27 150,34 153,23 144,16 156,15" fill="#ffe6a3" />
+            <path d="M96 46 C96 30, 224 30, 224 46 L232 56 L88 56 Z" fill="#ffb6d9" stroke="#ffe6a3" stroke-width="2" />
+            <circle cx="160" cy="116" r="74" fill="rgba(255,255,255,0.18)" stroke="rgba(255,255,255,0.75)" stroke-width="2.2" />
+            <circle cx="126" cy="134" r="15" fill="#ffb6d9" /><circle cx="160" cy="140" r="16" fill="#a3d5ff" /><circle cx="194" cy="134" r="15" fill="#c9b2ff" />
+            <circle cx="142" cy="108" r="14" fill="#ffe6a3" /><circle cx="178" cy="106" r="14" fill="#a8f0d8" /><circle cx="160" cy="82" r="13" fill="#ffd6e7" />
+            <rect x="74" y="174" width="172" height="24" rx="12" fill="#a3d5ff" stroke="#ffe6a3" stroke-width="2" />
+            <rect x="64" y="196" width="192" height="146" rx="28" fill="#e6d8ff" stroke="#ffe6a3" stroke-width="2.2" />
+            <rect x="76" y="206" width="168" height="126" rx="20" fill="rgba(36,16,70,0.35)" />
+            <circle class="gear-spin" cx="108" cy="244" r="14" fill="#ffe6a3" stroke="#341654" stroke-width="3" stroke-dasharray="6 4" />
+            <circle class="gear-spin" cx="212" cy="244" r="14" fill="#a3d5ff" stroke="#341654" stroke-width="3" stroke-dasharray="6 4" />
+            <circle cx="160" cy="244" r="22" fill="#ffb6d9" stroke="#ffffff" stroke-width="2" />
+            <text x="160" y="250" text-anchor="middle" fill="#341654" font-size="18">&#9829;</text>
+            <rect x="118" y="284" width="84" height="38" rx="12" fill="#1d0b3b" stroke="#ffe6a3" stroke-width="2" />
+            <text x="160" y="308" text-anchor="middle" fill="#ffe6a3" font-size="9" font-weight="700" letter-spacing="2">JOY CHUTE</text>
+            <path d="M52 342 L268 342 L276 368 L44 368 Z" fill="#ffb6d9" stroke="#ffe6a3" stroke-width="2" />
+          </svg>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <button id="c14GenBtn" type="button" class="btn-primary-glow">&#10022; Generate Happiness</button>
+          <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+            <button type="button" class="btn-nav" data-goto="13">&larr; Previous</button>
+            <button type="button" class="btn-nav border-amber-200/50 text-amber-200" data-goto="15">Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 15 — MINI FUN QUIZ (5 QUESTIONS)
+         ===================================================================== -->
+    <section id="chapter-15" class="chapter-view" data-chapter="15">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-amber-200 bg-white/5 border border-pink-200/25"><span id="c15StepLabel">QUESTION 1 OF 5</span></span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">Mini Fun Quiz</h2>
+          <p class="font-serif-elegant italic text-sm sm:text-lg text-pink-100/90">No right or wrong answers — just pick what sounds the most fun!</p>
+        </div>
+
+        <div class="glass-panel rounded-3xl p-5 sm:p-7 w-[min(94vw,560px)] my-2">
+          <div class="w-full h-2 rounded-full bg-white/15 overflow-hidden mb-4">
+            <div id="c15Bar" class="h-full w-[20%] bg-gradient-to-r from-pink-300 via-purple-300 to-amber-200 transition-all duration-500"></div>
+          </div>
+          <div id="c15QBox" class="flex flex-col gap-3">
+            <h3 id="c15QText" class="font-serif-elegant text-xl sm:text-2xl font-bold text-white"></h3>
+            <div id="c15Opts" class="flex flex-col gap-2.5"></div>
+          </div>
+          <div id="c15ResultBox" class="hidden flex-col items-center gap-3">
+            <span class="px-3.5 py-1 rounded-full bg-amber-200/20 border border-amber-200/50 text-xs font-bold uppercase tracking-widest text-amber-200">&#10022; 5 / 5 Answers Completed &#10022;</span>
+            <h3 class="font-display text-2xl font-bold text-white">Wonderful Picks, <span class="name-gradient js-her-name">[HER NAME]</span>!</h3>
+            <p id="c15ResultMsg" class="font-serif-elegant italic text-lg text-pink-100"></p>
+            <div id="c15Summary" class="flex flex-wrap justify-center gap-1.5"></div>
+            <button id="c15PlayAgain" type="button" class="btn-primary-glow mt-1">&#10227; Play Again</button>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+          <button type="button" class="btn-nav" data-goto="14">&larr; Previous</button>
+          <button type="button" class="btn-primary-glow" data-goto="16">Next &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 16 — A LITTLE PHOTO GALLERY (8 POLAROIDS + LIGHTBOX)
+         ===================================================================== -->
+    <section id="chapter-16" class="chapter-view" data-chapter="16">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-amber-200 bg-white/5 border border-pink-200/25">SCRAPBOOK GALLERY &bull; 8 FRAMES</span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">A Little Photo Gallery</h2>
+          <p class="font-serif-elegant italic text-sm sm:text-lg text-pink-100/90">Tap any Polaroid frame to open the zoom-in preview.</p>
+        </div>
+
+        <div id="c16Grid" class="w-full max-w-5xl grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-4 my-2"></div>
+
+        <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+          <button type="button" class="btn-nav" data-goto="15">&larr; Previous</button>
+          <button type="button" class="btn-primary-glow" data-goto="17">Next &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 17 — A POCKET FULL OF HAPPINESS (TREASURE CHEST)
+         ===================================================================== -->
+    <section id="chapter-17" class="chapter-view" data-chapter="17">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-amber-200 bg-white/5 border border-pink-200/25"><span id="c17Count">0 / 16 SURPRISES DISCOVERED</span></span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">A Pocket Full of Happiness</h2>
+          <p class="font-serif-elegant italic text-base sm:text-xl text-pink-100/90">Open the magical treasure chest for a little pocket of joy.</p>
+        </div>
+
+        <div id="c17Chest" class="chest-rig w-[250px] sm:w-[290px] cursor-pointer my-1">
+          <svg viewBox="0 0 340 265" fill="none" class="w-full h-auto max-h-[34vh] overflow-visible drop-shadow-[0_22px_38px_rgba(10,3,22,0.85)]">
+            <ellipse cx="170" cy="248" rx="122" ry="13" fill="#0d041c" opacity="0.75" />
+            <path d="M68 148 L272 148 L266 168 L74 168 Z" fill="#2d124d" />
+            <ellipse cx="170" cy="148" rx="92" ry="16" fill="#ffe6a3" fill-opacity="0.75" />
+            <path d="M62 148 L278 148 L268 238 C267 244, 262 248, 255 248 L85 248 C78 248, 73 244, 72 238 Z" fill="#ffb6d9" stroke="#ffe6a3" stroke-width="2.4" />
+            <rect x="116" y="148" width="12" height="100" fill="#ffe6a3" opacity="0.9" />
+            <rect x="212" y="148" width="12" height="100" fill="#ffe6a3" opacity="0.9" />
+            <circle cx="170" cy="166" r="20" fill="#ffe6a3" stroke="#fff" stroke-width="1.5" />
+            <text x="170" y="173" text-anchor="middle" fill="#341654" font-size="16">&#9829;</text>
+            <g class="chest-lid">
+              <path d="M56 148 C56 92, 102 76, 170 76 C238 76, 284 92, 284 148 Z" fill="#e6d8ff" stroke="#ffe6a3" stroke-width="2.4" />
+              <rect x="54" y="136" width="232" height="14" rx="6" fill="#ffe6a3" />
+              <polygon points="170,58 174,69 186,70 177,77 180,88 170,81 160,88 163,77 154,70 166,69" fill="#ffe6a3" stroke="#fff" />
+            </g>
+          </svg>
+        </div>
+
+        <div id="c17Card" class="hidden keepsake-cream-card rounded-3xl px-6 py-4 max-w-md">
+          <span id="c17Tag" class="text-[11px] font-bold uppercase tracking-widest text-purple-800">Surprise #1 of 16</span>
+          <p id="c17Msg" class="font-serif-elegant text-xl sm:text-2xl font-bold text-purple-950 mt-1"></p>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <button id="c17Btn" type="button" class="btn-primary-glow">&#10022; Open a Little Surprise</button>
+          <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+            <button type="button" class="btn-nav" data-goto="16">&larr; Previous</button>
+            <button type="button" class="btn-nav border-amber-200/50 text-amber-200" data-goto="18">Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 18 — THE LITTLE MEMORY GAME (4x3 GRID, 6 PAIRS)
+         ===================================================================== -->
+    <section id="chapter-18" class="chapter-view" data-chapter="18">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-amber-200 bg-white/5 border border-pink-200/25">6 MATCHING PAIRS</span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">The Little Memory Game</h2>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-2.5 my-1">
+          <span class="hud-pill cursor-default">Moves: <strong id="c18Moves" class="text-amber-200">0</strong></span>
+          <span class="hud-pill cursor-default">Pairs: <strong id="c18Pairs" class="text-amber-200">0 / 6</strong></span>
+          <button id="c18Restart" type="button" class="btn-primary-glow py-1.5 px-4 text-xs">&#10227; Restart Game</button>
+        </div>
+
+        <div id="c18Grid" class="w-full max-w-xl grid grid-cols-3 sm:grid-cols-4 gap-2.5 sm:gap-3 my-2"></div>
+
+        <p id="c18Victory" class="hidden glass-panel rounded-2xl px-5 py-2.5 text-amber-200 font-serif-elegant italic text-lg">
+          &#10022; Amazing! You matched all 6 pairs! &#10022;
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+          <button type="button" class="btn-nav" data-goto="17">&larr; Previous</button>
+          <button type="button" class="btn-primary-glow" data-goto="19">Next &rarr;</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 19 — A LITTLE MYSTERY GIFT (3D GIFT BOX + KEEPSAKE CARD)
+         ===================================================================== -->
+    <section id="chapter-19" class="chapter-view" data-chapter="19">
+      <div class="chapter-inner">
+        <div class="flex flex-col items-center gap-1">
+          <span class="px-3.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-amber-200 bg-white/5 border border-pink-200/25">WRAPPED IN STARLIGHT FOR <span class="js-her-name">[HER NAME]</span></span>
+          <h2 class="font-display text-2xl sm:text-4xl font-bold text-white">A Little Mystery Gift</h2>
+          <p id="c19Hint" class="font-serif-elegant italic text-base sm:text-xl text-pink-100/90">Tap the button below to untie the ribbon and open your mystery gift.</p>
+        </div>
+
+        <div id="c19Box" class="gift-rig w-[210px] sm:w-[240px] cursor-pointer my-1">
+          <svg viewBox="0 0 240 240" fill="none" class="w-full h-auto overflow-visible drop-shadow-[0_22px_36px_rgba(10,3,22,0.85)]">
+            <ellipse cx="120" cy="222" rx="82" ry="11" fill="#0d041c" opacity="0.7" />
+            <!-- Box Base -->
+            <rect x="44" y="96" width="152" height="118" rx="18" fill="url(#c19Grad)" stroke="#ffe6a3" stroke-width="2" />
+            <rect class="gift-ribbon" x="106" y="96" width="28" height="118" fill="#ffe6a3" />
+            <rect class="gift-ribbon" x="44" y="142" width="152" height="24" fill="#ffe6a3" />
+            <!-- Box Lid & Bow -->
+            <g class="gift-lid">
+              <rect x="34" y="68" width="172" height="36" rx="12" fill="#ffb6d9" stroke="#ffe6a3" stroke-width="2" />
+              <rect class="gift-ribbon" x="105" y="68" width="30" height="36" fill="#ffe6a3" />
+              <g class="gift-ribbon">
+                <ellipse cx="96" cy="56" rx="22" ry="14" transform="rotate(-18 96 56)" fill="#ffe6a3" />
+                <ellipse cx="144" cy="56" rx="22" ry="14" transform="rotate(18 144 56)" fill="#ffe6a3" />
+                <circle cx="120" cy="62" r="10" fill="#fff8dc" stroke="#e2a538" stroke-width="2" />
+              </g>
+            </g>
+            <defs>
+              <linearGradient id="c19Grad" x1="44" y1="96" x2="196" y2="214" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#ff9ec7" /><stop offset="1" stop-color="#a87cf5" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <div id="c19Card" class="hidden keepsake-cream-card rounded-3xl p-6 max-w-lg">
+          <span id="c19Badge" class="inline-block px-3 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-widest bg-purple-900/10 text-purple-900 mb-2">&#127873; Digital Gift Card</span>
+          <p id="c19Msg" class="font-serif-elegant text-lg sm:text-xl font-semibold leading-relaxed text-purple-950"></p>
+        </div>
+
+        <div class="flex flex-col items-center gap-3">
+          <button id="c19OpenBtn" type="button" class="btn-primary-glow">&#127873; Open Your Mystery Gift</button>
+          <button id="c19AnotherBtn" type="button" class="hidden btn-nav border-amber-200/60 text-amber-200">&#10024; Open Another Surprise</button>
+          <div class="flex flex-wrap justify-center gap-3 sm:gap-5">
+            <button type="button" class="btn-nav" data-goto="18">&larr; Previous</button>
+            <button type="button" class="btn-nav border-amber-200/50 text-amber-200" data-goto="20">Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         CHAPTER 20 — UNTIL THE NEXT ADVENTURE (GRAND FINALE — NO NEXT BUTTON)
+         ===================================================================== -->
+    <section id="chapter-20" class="chapter-view" data-chapter="20">
+      <div class="chapter-inner">
+        <span class="px-4 py-1 rounded-full text-[10px] sm:text-xs font-semibold tracking-[0.28em] uppercase text-amber-200 bg-white/5 border border-pink-200/25">
+          &#10022; CHAPTER 20 &bull; GRAND FINALE &#10022;
+        </span>
+
+        <!-- Glowing Castle + Final Message Card -->
+        <div class="flex flex-col items-center gap-4 w-full max-w-2xl my-auto">
+          <div class="glass-panel rounded-3xl p-6 sm:p-9 w-full">
+            <span class="inline-block px-3.5 py-0.5 rounded-full text-[11px] font-bold tracking-[0.2em] uppercase bg-amber-200/20 text-amber-200 border border-amber-200/45 mb-3">
+              &#127775; Until the Next Adventure
+            </span>
+            <h2 class="font-display text-2xl sm:text-4xl font-bold leading-tight mb-4">
+              <span class="name-gradient"><span class="js-her-name">[HER NAME]</span>, Keep Shining!</span>
+            </h2>
+            <div class="font-serif-elegant text-base sm:text-xl text-pink-50/95 leading-relaxed space-y-3 max-w-lg mx-auto">
+              <p>Every little adventure has its own magic.<br />I hope this little world brought you<br />some smiles and happy moments.</p>
+              <p>Keep dreaming, keep exploring,<br />and make this new year of your life<br />full of wonderful possibilities.</p>
+              <p class="italic font-bold text-amber-200 text-xl sm:text-2xl pt-1">Happy Birthday Once Again!</p>
+            </div>
+            <div class="flex flex-col items-center gap-2.5 mt-6">
+              <button type="button" class="btn-primary-glow" data-goto="1">&#10024; Replay the Journey</button>
+              <div class="flex flex-wrap justify-center gap-3 mt-1">
+                <button type="button" class="btn-nav text-xs" data-goto="1">Explore Again</button>
+                <button id="c20FireworksBtn" type="button" class="btn-nav border-amber-200/50 text-amber-200 text-xs">&#127878; More Fireworks</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fairytale Castle Silhouette -->
+          <svg viewBox="0 0 800 180" fill="none" class="w-full max-w-xl h-auto opacity-85 pointer-events-none">
+            <path d="M0 180 Q200 130 400 148 Q600 130 800 180 Z" fill="#4e248a" fill-opacity="0.7" />
+            <rect x="240" y="75" width="40" height="90" fill="#e6d8ff" /><polygon points="235,75 260,36 285,75" fill="#ff9ec7" />
+            <rect x="520" y="75" width="40" height="90" fill="#e6d8ff" /><polygon points="515,75 540,36 565,75" fill="#ff9ec7" />
+            <rect x="305" y="55" width="48" height="110" fill="#f8f2ff" /><polygon points="299,55 329,18 359,55" fill="#c9b2ff" />
+            <rect x="447" y="55" width="48" height="110" fill="#f8f2ff" /><polygon points="441,55 471,18 501,55" fill="#c9b2ff" />
+            <rect x="360" y="42" width="80" height="124" fill="#ffffff" /><polygon points="354,42 400,2 446,42" fill="#ff85b8" />
+            <rect x="392" y="64" width="16" height="24" rx="8" fill="#ffe6a3" />
+            <path d="M384 166 V136 A16 16 0 0 1 416 136 V166 Z" fill="#ffe6a3" />
+          </svg>
+        </div>
+
+        <!-- Final Page: Previous Only (No Next Button) -->
+        <div class="flex items-center justify-center gap-4">
+          <button type="button" class="btn-nav" data-goto="19">&larr; Previous</button>
+          <span class="text-xs font-bold tracking-widest uppercase text-amber-200/80">20 / 20 &bull; The End</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================================
+         SHARED OVERLAYS: BUTTERFLY, WISH TOAST, LETTER, CAPSULE, LIGHTBOX, DRAWER
+         ===================================================================== -->
+    <div id="magicButterfly" class="magic-butterfly" role="button" tabindex="0">
+      <svg viewBox="0 0 48 48" fill="none" class="w-full h-full">
+        <g class="bf-wing-l"><path d="M23 23 C14 10,4 12,7 22 C9 27,17 26,23 24 Z" fill="#ff9ec7"/><path d="M23 25 C15 27,9 34,14 38 C18 40,22 33,23 26 Z" fill="#c9b2ff"/></g>
+        <g class="bf-wing-r"><path d="M25 23 C34 10,44 12,41 22 C39 27,31 26,25 24 Z" fill="#ff9ec7"/><path d="M25 25 C33 27,39 34,34 38 C30 40,26 33,25 26 Z" fill="#c9b2ff"/></g>
+        <ellipse cx="24" cy="25" rx="1.8" ry="6.5" fill="#fff" />
+      </svg>
+    </div>
+
+    <div id="toastBanner" class="toast-banner" role="status"></div>
+    <div id="risingWishOrb" class="rising-wish-orb" aria-hidden="true"></div>
+
+    <!-- Chapter 05 Handwritten Letter Modal -->
+    <div id="letterModal" class="modal-backdrop">
+      <article class="keepsake-cream-card rounded-3xl w-[min(94vw,540px)] max-h-[82vh] flex flex-col overflow-hidden">
+        <div class="pt-4 pb-1 text-center text-xs tracking-[0.26em] uppercase text-purple-700 font-bold">&#10022; Birthday Wishes &#10022;</div>
+        <div class="flex-1 overflow-y-auto px-6 sm:px-9 py-4 text-left font-handwritten text-2xl leading-relaxed text-[#341654]">
+          <p class="font-bold text-purple-900 text-3xl mb-3">Dear <span class="js-her-name">[HER NAME]</span>,</p>
+          <p class="mb-3">Today is a special day, and I hope it brings you countless reasons to smile.</p>
+          <p class="mb-3">May the coming year bring you new adventures, beautiful opportunities, good memories and lots of happiness.</p>
+          <p class="mb-3">Keep being curious, keep dreaming big and never stop finding joy in the little things.</p>
+          <p>Wishing you a wonderful birthday and an amazing year ahead!</p>
+          <div class="mt-5 text-right font-bold text-purple-800">
+            <p>With warm wishes,</p><p class="text-3xl">A Friend &#10024;</p>
+          </div>
+        </div>
+        <div class="py-3.5 text-center border-t border-purple-200 bg-pink-50/70">
+          <button id="c5CloseBtn" type="button" class="btn-primary-glow py-2 px-6 text-xs">&#10005; Close Letter</button>
+        </div>
+      </article>
+    </div>
+
+    <!-- Chapter 14 Happiness Capsule Modal -->
+    <div id="capsuleModal" class="modal-backdrop">
+      <article class="keepsake-cream-card rounded-3xl p-6 sm:p-8 w-[min(92vw,440px)] text-center">
+        <span id="c14Tag" class="inline-block px-3 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-widest bg-purple-900/10 text-purple-900 mb-3">&#10022; Capsule #1 of 24 &#10022;</span>
+        <p id="c14Quote" class="font-serif-elegant text-2xl font-bold text-purple-950 my-2"></p>
+        <div class="flex flex-wrap justify-center gap-3 mt-5">
+          <button id="c14AgainBtn" type="button" class="btn-primary-glow py-2.5 px-5 text-xs">&#10227; Generate Again</button>
+          <button id="c14CloseBtn" type="button" class="px-5 py-2 rounded-full text-xs font-bold uppercase text-purple-900 bg-white border border-purple-300 cursor-pointer">&#10005; Close</button>
+        </div>
+      </article>
+    </div>
+
+    <!-- Chapter 16 Photo Gallery Lightbox -->
+    <div id="galleryModal" class="modal-backdrop">
+      <div class="w-[min(94vw,480px)] flex flex-col items-center gap-3">
+        <article class="keepsake-cream-card rounded-2xl p-4 w-full relative">
+          <button id="c16Close" type="button" class="absolute -top-3 -right-3 w-9 h-9 rounded-full bg-amber-200 text-purple-950 font-bold border-2 border-white shadow-lg cursor-pointer">&#10005;</button>
+          <div id="c16BoxWindow" class="w-full aspect-[4/3] rounded-xl border-2 border-dashed border-amber-200 flex flex-col items-center justify-center gap-2 text-white">
+            <span class="px-4 py-1.5 rounded-full bg-[#140829]/80 border border-amber-200 font-display text-sm font-bold text-amber-200">ADD PHOTO HERE</span>
+            <span id="c16FrameNum" class="text-xs uppercase tracking-widest text-pink-100">Frame 01 of 08</span>
+          </div>
+          <h3 id="c16CapTitle" class="font-handwritten text-3xl font-bold text-purple-950 mt-3 text-center"></h3>
+          <p id="c16CapSub" class="font-serif-elegant italic text-base text-purple-800 text-center"></p>
+        </article>
+        <div class="flex gap-4">
+          <button id="c16Prev" type="button" class="btn-nav">&larr; Prev Photo</button>
+          <button id="c16Next" type="button" class="btn-nav">Next Photo &rarr;</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Chapter Jump Drawer (All 20 Chapters) -->
+    <div id="chapterDrawer" class="chapter-drawer">
+      <div class="glass-panel rounded-3xl p-5 w-[min(94vw,640px)] max-h-[84vh] flex flex-col">
+        <div class="flex items-center justify-between mb-3">
+          <h3 class="font-display text-base sm:text-lg text-amber-200">&#10022; Jump to Any Chapter (01–20)</h3>
+          <button id="closeChapterDrawerBtn" type="button" class="hud-pill py-1 px-3">&#10005;</button>
+        </div>
+        <div id="chapterDrawerGrid" class="grid grid-cols-2 sm:grid-cols-4 gap-2 overflow-y-auto pr-1"></div>
+      </div>
+    </div>
+
+    <!-- CONTINUOUS BACKGROUND MUSIC (NEVER RESTARTS ACROSS CHAPTERS) -->
+    <audio id="bgMusic" src="assets/music/Gilded_Arrival.mp3" loop preload="auto"></audio>
+  </main>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // =========================================================================
+      // 1. GLOBAL STATE, NAME PERSISTENCE & CHAPTER NAVIGATION (01–20)
+      // =========================================================================
+      const CHAPTER_TITLES = [
+        '01 Star Gateway', '02 Welcome', '03 Guess What Day?', '04 Happy Birthday',
+        '05 Birthday Letter', '06 10 Little Things', '07 Smile Collection', '08 Little Moments',
+        '09 Nice Words', '10 Colorful World', '11 Music Corner', '12 A Cake for You',
+        '13 Make a Wish', '14 Joy Generator', '15 Mini Fun Quiz', '16 Photo Gallery',
+        '17 Pocket of Joy', '18 Memory Game', '19 Mystery Gift', '20 Grand Finale'
+      ];
+
+      let currentChapter = 1;
+      let activeName = '[HER NAME]';
+      const p1NameEditable = document.getElementById('p1NameEditable');
+      const hudChapterLabel = document.getElementById('hudChapterLabel');
+      const chapterViews = document.querySelectorAll('.chapter-view');
+      const butterflyEl = document.getElementById('magicButterfly');
+      const toastBanner = document.getElementById('toastBanner');
+      const chapterDrawer = document.getElementById('chapterDrawer');
+      const chapterDrawerGrid = document.getElementById('chapterDrawerGrid');
+      let toastTimer = null;
+
+      function showToast(msg) {
+        toastBanner.textContent = msg;
+        toastBanner.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => toastBanner.classList.remove('show'), 3200);
+      }
+
+      function saveName(name) {
+        activeName = (name && name.trim()) ? name.trim() : '[HER NAME]';
+        try {
+          localStorage.setItem('herUniverseName', activeName);
+          localStorage.setItem('birthday_her_name', activeName);
+        } catch (_) {}
+        p1NameEditable.textContent = activeName;
+        document.querySelectorAll('.js-her-name').forEach((el) => { el.textContent = activeName; });
+      }
+
+      (function initName() {
+        const urlName = new URLSearchParams(window.location.search).get('name');
+        if (urlName && urlName.trim()) { saveName(urlName); return; }
+        try {
+          saveName(localStorage.getItem('herUniverseName') || localStorage.getItem('birthday_her_name') || '[HER NAME]');
+        } catch (_) { saveName('[HER NAME]'); }
+      })();
+
+      p1NameEditable.addEventListener('blur', () => saveName(p1NameEditable.textContent));
+      p1NameEditable.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); p1NameEditable.blur(); } });
+
+      // Build 20-Chapter Quick Drawer
+      CHAPTER_TITLES.forEach((label, idx) => {
+        const num = idx + 1;
+        const btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'chapter-grid-btn';
+        btn.dataset.drawerNum = String(num);
+        btn.textContent = label;
+        btn.addEventListener('click', () => {
+          chapterDrawer.classList.remove('open');
+          goToChapter(num);
+        });
+        chapterDrawerGrid.appendChild(btn);
+      });
+
+      document.getElementById('openChapterDrawerBtn').addEventListener('click', () => chapterDrawer.classList.add('open'));
+      document.getElementById('closeChapterDrawerBtn').addEventListener('click', () => chapterDrawer.classList.remove('open'));
+      chapterDrawer.addEventListener('click', (e) => { if (e.target === chapterDrawer) chapterDrawer.classList.remove('open'); });
+
+      // Core 20-Chapter Navigation Controller
+      function goToChapter(num) {
+        const target = Math.max(1, Math.min(20, Number(num) || 1));
+        currentChapter = target;
+
+        chapterViews.forEach((view) => {
+          const isTarget = Number(view.dataset.chapter) === target;
+          view.classList.toggle('active', isTarget);
+          if (isTarget) view.scrollTop = 0;
+        });
+
+        // Chapter 01 gateway arrival animation
+        const ch1 = document.getElementById('chapter-1');
+        if (ch1 && target === 1) {
+          requestAnimationFrame(() => ch1.classList.add('arrived'));
+        }
+
+        // Update HUD & Drawer active state
+        hudChapterLabel.textContent = `CHAPTER ${String(target).padStart(2, '0')} / 20`;
+        document.querySelectorAll('.chapter-grid-btn').forEach((btn) => {
+          btn.classList.toggle('active', Number(btn.dataset.drawerNum) === target);
+        });
+
+        // Show butterfly companion on Chapter 02 only
+        butterflyEl.style.display = target === 2 ? 'block' : 'none';
+
+        // Reset Chapter 10 color wash when leaving Chapter 10
+        if (target !== 10) {
+          document.documentElement.style.setProperty('--ch10-wash', 'rgba(255, 182, 217, 0)');
+        }
+
+        // Launch celebratory fireworks on Grand Finale (Chapter 20)
+        if (target === 20) {
+          setTimeout(() => {
+            launchFirework(W * 0.28, H * 0.22);
+            launchFirework(W * 0.72, H * 0.2);
+            spawnShootingStar();
+          }, 350);
+        }
+
+        // Track virtual chapter view in Google Analytics
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'page_view', {
+            page_title: CHAPTER_TITLES[target - 1] || `Chapter ${target}`,
+            page_path: `/chapter-${String(target).padStart(2, '0')}`
+          });
+        }
+      }
+
+      // Wire all Previous / Next / Replay buttons
+      document.querySelectorAll('[data-goto]').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const dest = parseInt(btn.getAttribute('data-goto'), 10);
+          if (!Number.isNaN(dest)) {
+            playChime([523.25, 659.25, 783.99], 0.55);
+            goToChapter(dest);
+          }
+        });
+      });
+
+      // Chapter 01 Secret Wish Stars
+      document.querySelectorAll('.wish-star-btn').forEach((btn, idx) => {
+        btn.addEventListener('click', () => {
+          const rect = btn.getBoundingClientRect();
+          spawnBurst(rect.left + rect.width / 2, rect.top + rect.height / 2, 24);
+          playChime([523.25 + idx * 55, 783.99 + idx * 45], 0.65);
+          showToast(btn.getAttribute('data-wish') || '✨ A secret starlight wish!');
+        });
+      });
+
+      // =========================================================================
+      // 2. CONTINUOUS AUDIO & WEB AUDIO CHIMES
+      // =========================================================================
+      const bgMusic = document.getElementById('bgMusic');
+      const soundToggleBtn = document.getElementById('soundToggleBtn');
+      const soundBars = document.getElementById('soundBars');
+      const soundLabel = document.getElementById('soundLabel');
+      let musicPlaying = false;
+      let sfxMuted = false;
+      let sfxCtx = null;
+
+      function playChime(freqs = [523.25, 659.25, 783.99], duration = 0.7) {
+        if (sfxMuted) return;
+        try {
+          const AC = window.AudioContext || window.webkitAudioContext;
+          if (!AC) return;
+          if (!sfxCtx) sfxCtx = new AC();
+          if (sfxCtx.state === 'suspended') sfxCtx.resume();
+          freqs.forEach((f, i) => {
+            const osc = sfxCtx.createOscillator();
+            const g = sfxCtx.createGain();
+            osc.type = 'sine';
+            const t = sfxCtx.currentTime + i * 0.055;
+            osc.frequency.setValueAtTime(f, t);
+            g.gain.setValueAtTime(0.0001, t);
+            g.gain.exponentialRampToValueAtTime(0.038, t + 0.025);
+            g.gain.exponentialRampToValueAtTime(0.0001, t + duration);
+            osc.connect(g); g.connect(sfxCtx.destination);
+            osc.start(t); osc.stop(t + duration + 0.04);
+          });
+        } catch (_) {}
+      }
+
+      function updateSoundUI(playing) {
+        musicPlaying = playing;
+        sfxMuted = !playing;
+        soundBars.classList.toggle('playing', playing);
+        soundLabel.textContent = playing ? 'Sound On' : 'Sound Off';
+      }
+
+      soundToggleBtn.addEventListener('click', () => {
+        if (musicPlaying) {
+          bgMusic.pause();
+          updateSoundUI(false);
+        } else {
+          bgMusic.volume = 0.45;
+          const p = bgMusic.play();
+          if (p && p.then) p.then(() => updateSoundUI(true)).catch(() => updateSoundUI(true));
+          else updateSoundUI(true);
+        }
+      });
+
+      // =========================================================================
+      // 3. UNIFIED 60FPS CANVAS (STARS, SHOOTING STARS, BURSTS, CONFETTI, BALLOONS, FIREWORKS)
+      // =========================================================================
+      const canvas = document.getElementById('globalCanvas');
+      const ctx = canvas.getContext('2d');
+      let W = 0, H = 0, dpr = 1;
+      let stars = [], shootingStars = [], bursts = [], confetti = [], balloons = [], fireworks = [];
+      let lastShootTs = 0;
+
+      const PALETTE = ['#ffffff', '#ffe6a3', '#ffd6e7', '#ffb6d9', '#c9b2ff', '#a3d5ff'];
+      const BALLOON_COLS = ['#ffb6d9', '#c9b2ff', '#ffe6a3', '#a8f0d8'];
+
+      function resizeCanvas() {
+        W = window.innerWidth; H = window.innerHeight;
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.floor(W * dpr); canvas.height = Math.floor(H * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      function initStars() {
+        const isMobile = W < 640;
+        const n = Math.min(Math.floor((W * H) / (isMobile ? 7600 : 5600)), isMobile ? 95 : 190);
+        stars = Array.from({ length: n }, () => ({
+          x: Math.random() * W, y: Math.random() * H, r: 0.45 + Math.random() * 1.6,
+          phase: Math.random() * Math.PI * 2, speed: 0.008 + Math.random() * 0.022,
+          color: PALETTE[Math.floor(Math.random() * PALETTE.length)]
+        }));
+      }
+
+      function spawnBurst(cx, cy, count = 26) {
+        for (let i = 0; i < count; i++) {
+          const a = Math.random() * Math.PI * 2, sp = 1 + Math.random() * 4;
+          bursts.push({ x: cx, y: cy, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 0.5, r: 1.5 + Math.random() * 2.5, alpha: 1, decay: 0.015 + Math.random() * 0.012, color: PALETTE[Math.floor(Math.random() * PALETTE.length)] });
+        }
+      }
+
+      function spawnConfetti(count = 80) {
+        for (let i = 0; i < count; i++) {
+          confetti.push({ x: Math.random() * W, y: -15 - Math.random() * H * 0.3, w: 5 + Math.random() * 7, h: 3 + Math.random() * 4, vx: (Math.random() - 0.5) * 2, vy: 1.4 + Math.random() * 2.2, rot: Math.random() * 6, rotSp: (Math.random() - 0.5) * 0.12, color: PALETTE[Math.floor(Math.random() * PALETTE.length)] });
+        }
+      }
+
+      function spawnBalloons(count = 9) {
+        for (let i = 0; i < count; i++) {
+          balloons.push({ x: W * (0.08 + Math.random() * 0.84), y: H + 50 + Math.random() * 140, rx: 18 + Math.random() * 8, ry: 23 + Math.random() * 9, vy: -(1.2 + Math.random() * 1.4), phase: Math.random() * 6, color: BALLOON_COLS[Math.floor(Math.random() * BALLOON_COLS.length)] });
+        }
+      }
+
+      function launchFirework(cx, cy) {
+        for (let i = 0; i < 60; i++) {
+          const a = (Math.PI * 2 * i) / 60 + (Math.random() - 0.5) * 0.15, sp = 1.8 + Math.random() * 5;
+          fireworks.push({ x: cx, y: cy, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, r: 1.6 + Math.random() * 2.4, alpha: 1, decay: 0.013 + Math.random() * 0.01, color: PALETTE[Math.floor(Math.random() * PALETTE.length)] });
+        }
+      }
+
+      function spawnShootingStar() {
+        shootingStars.push({ x: W * (0.1 + Math.random() * 0.55), y: H * (0.06 + Math.random() * 0.25), vx: 10, vy: 4.2, alpha: 1 });
+      }
+
+      function animateCanvas(ts) {
+        ctx.clearRect(0, 0, W, H);
+        for (let i = 0; i < stars.length; i++) {
+          const s = stars[i]; s.phase += s.speed;
+          ctx.globalAlpha = 0.35 + 0.55 * Math.sin(s.phase);
+          ctx.fillStyle = s.color; ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2); ctx.fill();
+        }
+        if ((currentChapter === 1 || currentChapter === 13 || currentChapter === 20) && ts - lastShootTs > 3800) {
+          lastShootTs = ts; spawnShootingStar();
+        }
+        for (let i = shootingStars.length - 1; i >= 0; i--) {
+          const st = shootingStars[i]; st.x += st.vx; st.y += st.vy; st.alpha -= 0.018;
+          if (st.alpha <= 0) { shootingStars.splice(i, 1); continue; }
+          ctx.globalAlpha = st.alpha; ctx.strokeStyle = '#ffe6a3'; ctx.lineWidth = 2.4; ctx.lineCap = 'round';
+          ctx.beginPath(); ctx.moveTo(st.x, st.y); ctx.lineTo(st.x - 85, st.y - 35); ctx.stroke();
+        }
+        for (let i = confetti.length - 1; i >= 0; i--) {
+          const c = confetti[i]; c.x += c.vx; c.y += c.vy; c.rot += c.rotSp;
+          if (c.y > H + 20) { confetti.splice(i, 1); continue; }
+          ctx.save(); ctx.translate(c.x, c.y); ctx.rotate(c.rot); ctx.globalAlpha = 0.92; ctx.fillStyle = c.color;
+          ctx.fillRect(-c.w / 2, -c.h / 2, c.w, c.h); ctx.restore();
+        }
+        for (let i = balloons.length - 1; i >= 0; i--) {
+          const b = balloons[i]; b.phase += 0.024; b.x += Math.sin(b.phase) * 0.8; b.y += b.vy;
+          if (b.y < -80) { balloons.splice(i, 1); continue; }
+          ctx.save(); ctx.translate(b.x, b.y); ctx.globalAlpha = 0.9; ctx.strokeStyle = 'rgba(255,214,231,0.5)';
+          ctx.beginPath(); ctx.moveTo(0, b.ry); ctx.lineTo(0, b.ry + 42); ctx.stroke();
+          ctx.fillStyle = b.color; ctx.beginPath(); ctx.ellipse(0, 0, b.rx, b.ry, 0, 0, Math.PI * 2); ctx.fill(); ctx.restore();
+        }
+        [bursts, fireworks].forEach((arr, isFw) => {
+          for (let i = arr.length - 1; i >= 0; i--) {
+            const p = arr[i]; p.x += p.vx; p.y += p.vy; p.vx *= 0.97; p.vy = p.vy * 0.97 + (isFw ? 0.04 : 0); p.alpha -= p.decay;
+            if (p.alpha <= 0) { arr.splice(i, 1); continue; }
+            ctx.globalAlpha = p.alpha; ctx.fillStyle = p.color; ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+          }
+        });
+        ctx.globalAlpha = 1;
+        requestAnimationFrame(animateCanvas);
+      }
+
+      // =========================================================================
+      // CHAPTER 02 — BUTTERFLY COMPANION (MOUSE + MOBILE TOUCH)
+      // =========================================================================
+      const bf = { x: window.innerWidth * 0.5, y: window.innerHeight * 0.45, vx: 0, vy: 0, ph: 0 };
+      let mx = null, my = null, mAct = 0;
+      window.addEventListener('mousemove', (e) => { mx = e.clientX; my = e.clientY; mAct = 100; }, { passive: true });
+      window.addEventListener('touchmove', (e) => {
+        if (currentChapter === 2 && e.touches && e.touches[0]) {
+          mx = e.touches[0].clientX; my = e.touches[0].clientY; mAct = 110;
+        }
+      }, { passive: true });
+      window.addEventListener('touchstart', (e) => {
+        if (currentChapter === 2 && e.touches && e.touches[0]) {
+          mx = e.touches[0].clientX; my = e.touches[0].clientY; mAct = 110;
+        }
+      }, { passive: true });
+      butterflyEl.addEventListener('click', () => { spawnBurst(bf.x + 23, bf.y + 23, 24); playChime([784, 988, 1175]); });
+      (function loopBf() {
+        if (currentChapter === 2) {
+          bf.ph += 0.025;
+          let tx = W * 0.5 + Math.cos(bf.ph * 0.7) * (W * 0.22), ty = H * 0.45 + Math.sin(bf.ph * 1.1) * (H * 0.14);
+          if (mAct > 0 && mx !== null) { mAct--; tx = mx + Math.cos(bf.ph * 2.2) * 52 - 23; ty = my + Math.sin(bf.ph * 2.2) * 44 - 23; }
+          bf.vx = (bf.vx + (tx - bf.x) * 0.018) * 0.91; bf.vy = (bf.vy + (ty - bf.y) * 0.018) * 0.91;
+          bf.x += bf.vx; bf.y += bf.vy;
+          butterflyEl.style.transform = `translate3d(${bf.x.toFixed(1)}px,${bf.y.toFixed(1)}px,0) rotate(${Math.max(-25, Math.min(25, bf.vx * 5)).toFixed(1)}deg)`;
+        }
+        requestAnimationFrame(loopBf);
+      })();
+
+      // =========================================================================
+      // CHAPTER 03 — CALENDAR QUIZ
+      // =========================================================================
+      let c3Solved = false;
+      document.querySelectorAll('.c3-opt').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          if (c3Solved) { spawnConfetti(50); return; }
+          if (btn.dataset.date === 'January 1') {
+            c3Solved = true;
+            document.getElementById('c3CalendarFlip').classList.add('is-flipped');
+            document.getElementById('c3Feedback').textContent = '✨ You found the special day! January 1, 2027 ✨';
+            document.getElementById('c3Feedback').className = 'text-sm sm:text-base font-bold text-amber-200';
+            spawnConfetti(90); spawnBurst(W * 0.5, H * 0.44, 34); playChime([523, 659, 784, 1046]);
+          } else {
+            btn.classList.remove('shake-x'); void btn.offsetWidth; btn.classList.add('shake-x');
+            document.getElementById('c3Feedback').textContent = 'Ooh, close in spirit! ✨ Think earlier in January and try again!';
+            playChime([392, 349], 0.4);
+          }
+        });
+      });
+
+      // =========================================================================
+      // CHAPTER 04 — 5-CANDLE BIRTHDAY CAKE
+      // =========================================================================
+      const c4Els = Array.from(document.querySelectorAll('.c4-candle'));
+      const c4Lit = [true, true, true, true, true];
+      const c4BlowBtn = document.getElementById('c4BlowBtn');
+      const c4Banner = document.getElementById('c4WishBanner');
+      function updateC4() {
+        const allOut = c4Lit.every((v) => !v);
+        c4Banner.classList.toggle('hidden', !allOut);
+        c4BlowBtn.innerHTML = allOut ? '&#10024; Relight Candles' : '&#128168; Blow Out Candles';
+      }
+      function setC4(i, lit) {
+        c4Lit[i] = lit; c4Els[i].classList.toggle('out', !lit); updateC4();
+        if (!lit && c4Lit.every((v) => !v)) { spawnConfetti(90); spawnBalloons(10); playChime([523, 659, 784, 1046]); }
+      }
+      c4Els.forEach((el, i) => el.addEventListener('click', () => { setC4(i, !c4Lit[i]); playChime([659, 523], 0.4); }));
+      c4BlowBtn.addEventListener('click', () => { const allOut = c4Lit.every((v) => !v); c4Els.forEach((_, i) => setTimeout(() => setC4(i, allOut), i * 95)); });
+      document.getElementById('c4CelebrateBtn').addEventListener('click', () => { spawnConfetti(85); spawnBalloons(10); playChime([587, 740, 880, 1175]); });
+
+      // =========================================================================
+      // CHAPTER 05 — BIRTHDAY LETTER
+      // =========================================================================
+      const c5Env = document.getElementById('c5Envelope');
+      const letterModal = document.getElementById('letterModal');
+      function openC5() { c5Env.classList.add('opened'); playChime([523, 659, 784, 1046]); setTimeout(() => letterModal.classList.add('open'), 520); }
+      function closeC5() { letterModal.classList.remove('open'); setTimeout(() => c5Env.classList.remove('opened'), 250); }
+      c5Env.addEventListener('click', openC5);
+      document.getElementById('c5OpenBtn').addEventListener('click', openC5);
+      document.getElementById('c5CloseBtn').addEventListener('click', closeC5);
+      letterModal.addEventListener('click', (e) => { if (e.target === letterModal) closeC5(); });
+
+      // =========================================================================
+      // CHAPTER 06 — 10 LITTLE THINGS
+      // =========================================================================
+      const C6_ITEMS = [
+        'Your smile makes ordinary moments brighter.', 'You deserve countless happy moments.',
+        'Your uniqueness is something special.', 'Keep believing in your dreams.',
+        'Never lose your curiosity.', 'Your kindness matters.',
+        'Every little achievement counts.', 'Keep exploring the world.',
+        'You deserve good memories.', 'Always keep being yourself.'
+      ];
+      const c6Grid = document.getElementById('c6Grid');
+      const c6Set = new Set(), c6Inners = [];
+      C6_ITEMS.forEach((txt, i) => {
+        const w = document.createElement('div'); w.className = 'perspective-box h-[132px]';
+        const inn = document.createElement('div'); inn.className = 'flip-3d-inner';
+        inn.innerHTML = `
+          <div class="flip-face glass-panel"><span class="text-[10px] uppercase tracking-widest text-pink-200/75">&#10022; Note</span><span class="font-display text-3xl font-bold name-gradient">${i + 1}</span></div>
+          <div class="flip-face flip-face-back keepsake-cream-card p-3"><span class="text-[10px] font-bold text-purple-700 mb-1">#${i + 1}</span><p class="font-serif-elegant text-xs sm:text-sm font-semibold text-purple-950 leading-snug">${txt}</p></div>
+        `;
+        inn.addEventListener('click', () => {
+          if (inn.classList.toggle('is-flipped')) { c6Set.add(i); document.getElementById('c6Count').textContent = `${c6Set.size} / 10`; playChime([523 + i * 25, 784], 0.45); }
+        });
+        c6Inners.push(inn); w.appendChild(inn); c6Grid.appendChild(w);
+      });
+      document.getElementById('c6FlipAll').addEventListener('click', () => {
+        const all = c6Inners.every((el) => el.classList.contains('is-flipped'));
+        c6Inners.forEach((el, i) => setTimeout(() => { el.classList.toggle('is-flipped', !all); if (!all) c6Set.add(i); document.getElementById('c6Count').textContent = `${c6Set.size} / 10`; }, i * 45));
+      });
+
+      // =========================================================================
+      // CHAPTER 07 — SMILE COLLECTION (6 POLAROIDS)
+      // =========================================================================
+      const C7_NOTES = [
+        'A candid smile that brightens up the room.', 'Spontaneous laughs worth remembering.',
+        'Golden hour sunshine matching your energy.', 'Everyday adventures turned into stories.',
+        'Pure joy captured in a single frame.', 'Here is to many more smiles ahead!'
+      ];
+      const c7Grid = document.getElementById('c7Grid');
+      const c7Set = new Set();
+      C7_NOTES.forEach((msg, i) => {
+        const card = document.createElement('article'); card.className = 'polaroid-item text-center';
+        card.innerHTML = `
+          <div class="w-full aspect-[16/10] rounded-md bg-gradient-to-br from-[#2b124c] to-[#1c0b36] border border-dashed border-amber-200/70 flex flex-col items-center justify-center">
+            <span class="font-display text-xs font-bold text-amber-200">ADD PHOTO HERE</span>
+          </div>
+          <p class="font-handwritten text-xl font-bold text-purple-950 mt-2">Memory #0${i + 1}</p>
+          <p class="c7-note hidden font-handwritten text-base text-purple-800 mt-1 border-t border-dashed border-purple-300 pt-1">“${msg}”</p>
+        `;
+        card.addEventListener('click', () => {
+          card.querySelector('.c7-note').classList.toggle('hidden');
+          c7Set.add(i); document.getElementById('c7Count').textContent = `${c7Set.size} / 6`;
+          playChime([587 + i * 30, 880], 0.45);
+        });
+        c7Grid.appendChild(card);
+      });
+
+      // =========================================================================
+      // CHAPTER 08 — LITTLE MOMENTS (5 CHECKPOINTS)
+      // =========================================================================
+      const C8_DATA = [
+        { t: 'Little Beginnings', m: 'Every wonderful story starts with quiet, simple beginnings and small sparks of everyday magic.' },
+        { t: 'Happy Surprises', m: 'Life feels sweetest in spontaneous little bursts of joy—a favorite song or an unexpected reason to smile.' },
+        { t: 'Beautiful Days', m: 'Here is to calm, peaceful days filled with soft pastel skies, gentle laughter, and appreciating right now.' },
+        { t: 'Unexpected Smiles', m: 'Often the simplest, unplanned moments carry the brightest warmth and become favorite memories.' },
+        { t: 'More Memories Ahead', m: 'The best chapters are still ahead—filled with new adventures and simple everyday happiness.' }
+      ];
+      const c8Box = document.getElementById('c8Timeline'), c8Set = new Set(), c8Cards = [];
+      C8_DATA.forEach((item, i) => {
+        const el = document.createElement('div'); el.className = 'glass-panel rounded-2xl p-4 flex flex-col items-center gap-2 cursor-pointer transition hover:border-amber-200';
+        el.innerHTML = `
+          <div class="w-11 h-11 rounded-full bg-gradient-to-br from-amber-200 to-pink-300 text-purple-950 font-display font-bold flex items-center justify-center shadow-[0_0_18px_rgba(255,230,163,0.75)]">${i + 1}</div>
+          <h3 class="font-display text-xs sm:text-sm font-bold text-amber-200">${item.t}</h3>
+          <p class="c8-msg hidden text-xs text-pink-50/95 leading-relaxed">${item.m}</p>
+        `;
+        el.addEventListener('click', () => {
+          el.querySelector('.c8-msg').classList.toggle('hidden');
+          c8Set.add(i); document.getElementById('c8Count').textContent = `${c8Set.size} / 5 EXPLORED`;
+          playChime([523 + i * 45, 784 + i * 40], 0.55);
+        });
+        c8Cards.push(el); c8Box.appendChild(el);
+      });
+      document.getElementById('c8RevealAll').addEventListener('click', () => {
+        c8Cards.forEach((c, i) => { c.querySelector('.c8-msg').classList.remove('hidden'); c8Set.add(i); });
+        document.getElementById('c8Count').textContent = '5 / 5 EXPLORED';
+      });
+
+      // =========================================================================
+      // CHAPTER 09 — A FEW NICE WORDS (14 CARDS)
+      // =========================================================================
+      const C9_CARDS = [
+        'You have your own kind of magic.', 'Your dreams deserve a chance.',
+        'Keep making the world a little brighter.', 'Your curiosity can take you far.',
+        'Never underestimate the power of a small smile.', 'The way you notice little details makes every day richer.',
+        'Your kindness leaves a gentle mark wherever you go.', 'You bring a calm, uplifting energy into every room.',
+        'Even on quiet days, your resilience shines through.', 'Your creativity turns ordinary ideas into something wonderful.',
+        'Being genuinely yourself is your greatest superpower.', 'Your laughter makes everything feel lighter.',
+        'Every step you take toward your goals is worth celebrating.', 'The world is genuinely better with your bright spirit in it.'
+      ];
+      let c9Idx = -1; const c9Seen = new Set();
+      const c9Card3D = document.getElementById('c9Card3D');
+      const c9ShuffleBtn = document.getElementById('c9ShuffleBtn');
+      function nextC9() {
+        c9Card3D.classList.remove('is-flipped');
+        setTimeout(() => {
+          c9Idx = (c9Idx + 1) % C9_CARDS.length;
+          c9Seen.add(c9Idx);
+          document.getElementById('c9Badge').innerHTML = `&#10022; Card #${String(c9Idx + 1).padStart(2, '0')} of 14 &#10022;`;
+          document.getElementById('c9Quote').textContent = `“${C9_CARDS[c9Idx]}”`;
+          document.getElementById('c9Count').textContent = `${c9Seen.size} / 14 CARDS DISCOVERED`;
+          c9ShuffleBtn.innerHTML = '&#10227; Shuffle Another Card';
+          c9Card3D.classList.add('is-flipped');
+          spawnBurst(W * 0.5, H * 0.46, 26); playChime([523, 659, 784, 1046]);
+        }, c9Seen.size === 0 ? 40 : 280);
+      }
+      c9ShuffleBtn.addEventListener('click', nextC9);
+      c9Card3D.addEventListener('click', nextC9);
+
+      // =========================================================================
+      // CHAPTER 10 — YOUR COLORFUL WORLD (7 ORBS)
+      // =========================================================================
+      const C10_ORBS = [
+        { n: 'Pink', t: 'Pink — A little more happiness.', w: 'For sweet moments and warm smiles.', bg: 'radial-gradient(circle at 35% 30%,#fff0f6,#ff9ec7,#e05697)', glow: 'rgba(255,158,199,0.75)', wash: 'rgba(255,158,199,0.34)' },
+        { n: 'Purple', t: 'Purple — Keep dreaming big.', w: 'For boundless imagination and starry ambitions.', bg: 'radial-gradient(circle at 35% 30%,#f5ebff,#c9b2ff,#7c4bc9)', glow: 'rgba(201,178,255,0.75)', wash: 'rgba(201,178,255,0.34)' },
+        { n: 'Blue', t: 'Blue — Peaceful and beautiful days.', w: 'For calm skies and serene horizons.', bg: 'radial-gradient(circle at 35% 30%,#eef9ff,#8ed6ff,#3b82f6)', glow: 'rgba(142,214,255,0.75)', wash: 'rgba(142,214,255,0.32)' },
+        { n: 'Yellow', t: 'Yellow — Sunshine and laughter.', w: 'For golden rays of cheer and bright energy.', bg: 'radial-gradient(circle at 35% 30%,#fffbeb,#ffe680,#f59e0b)', glow: 'rgba(255,230,128,0.8)', wash: 'rgba(255,230,128,0.32)' },
+        { n: 'Green', t: 'Green — New beginnings.', w: 'For fresh chapters and blooming possibilities.', bg: 'radial-gradient(circle at 35% 30%,#ecfdf5,#86efac,#10b981)', glow: 'rgba(134,239,172,0.75)', wash: 'rgba(134,239,172,0.3)' },
+        { n: 'Orange', t: 'Orange — Adventures and excitement.', w: 'For bold curiosity and joyful discoveries.', bg: 'radial-gradient(circle at 35% 30%,#fff7ed,#fdba74,#f97316)', glow: 'rgba(253,186,116,0.8)', wash: 'rgba(253,186,116,0.32)' },
+        { n: 'White', t: 'White — Endless possibilities.', w: 'A pure canvas of starlight ready for all the magic ahead.', bg: 'radial-gradient(circle at 35% 30%,#ffffff,#f8fafc,#cbd5e1)', glow: 'rgba(255,255,255,0.85)', wash: 'rgba(255,255,255,0.28)' }
+      ];
+      const c10Wrap = document.getElementById('c10Orbs'), c10Set = new Set();
+      C10_ORBS.forEach((o, i) => {
+        const col = document.createElement('div'); col.className = 'flex flex-col items-center gap-1';
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'color-orb';
+        b.style.background = o.bg; b.style.setProperty('--oglow', o.glow);
+        b.addEventListener('click', () => {
+          document.querySelectorAll('.color-orb').forEach((x) => x.classList.remove('active'));
+          b.classList.add('active'); c10Set.add(o.n);
+          document.getElementById('c10Count').textContent = `${c10Set.size} / 7 COLORS AWAKENED`;
+          document.documentElement.style.setProperty('--ch10-wash', o.wash);
+          document.getElementById('c10Tag').innerHTML = `&#10022; ${o.n} Light &#10022;`;
+          document.getElementById('c10Title').textContent = o.t;
+          document.getElementById('c10Wish').textContent = o.w;
+          const r = b.getBoundingClientRect(); spawnBurst(r.left + 32, r.top + 32, 26); playChime([523 + i * 55, 784 + i * 45], 0.65);
+        });
+        const lbl = document.createElement('span'); lbl.className = 'text-[10px] font-bold uppercase tracking-widest text-pink-100'; lbl.textContent = o.n;
+        col.appendChild(b); col.appendChild(lbl); c10Wrap.appendChild(col);
+      });
+
+      // =========================================================================
+      // CHAPTER 11 — MUSIC CORNER
+      // =========================================================================
+      let c11Track = 0, c11Playing = false, c11Prog = 0;
+      const c11Wave = document.getElementById('c11Wave'), c11Bars = [];
+      for (let i = 0; i < 18; i++) { const s = document.createElement('span'); s.className = 'w-1 rounded-full bg-gradient-to-t from-purple-300 via-pink-300 to-amber-200 transition-all'; s.style.height = '5px'; c11Wave.appendChild(s); c11Bars.push(s); }
+      const c11Grid = document.getElementById('c11TracksGrid'), c11Cards = [];
+      [1, 2, 3].forEach((n, idx) => {
+        const card = document.createElement('button'); card.type = 'button';
+        card.className = 'glass-panel rounded-2xl p-3 text-left cursor-pointer hover:border-amber-200 transition';
+        card.innerHTML = `<div class="w-full aspect-video rounded-xl bg-gradient-to-br from-purple-900 via-pink-900/60 to-purple-950 border border-dashed border-amber-200/60 flex items-center justify-center mb-2"><span class="px-2.5 py-1 rounded-full bg-[#140829]/80 text-[10px] font-display font-bold text-amber-200">&#9835; ADD MUSIC HERE</span></div><p class="text-[10px] font-bold text-amber-200">TRACK 0${n}</p><p class="text-xs font-bold text-white">ADD MUSIC HERE</p><p class="text-[10px] text-pink-200/80">ADD AUDIO FILE HERE</p>`;
+        card.addEventListener('click', () => { c11Track = idx; c11Prog = 0; updateC11(true); });
+        c11Cards.push(card); c11Grid.appendChild(card);
+      });
+      function updateC11(play) {
+        c11Playing = play;
+        document.getElementById('c11Vinyl').classList.toggle('spinning', play);
+        document.getElementById('c11VinylCode').textContent = `TRACK 0${c11Track + 1}`;
+        document.getElementById('c11TrackTitle').textContent = `TRACK 0${c11Track + 1} — ADD MUSIC HERE`;
+        document.getElementById('c11PlayPause').innerHTML = play ? '&#10074;&#10074; Pause' : '&#9654; Play';
+        c11Cards.forEach((c, i) => c.style.borderColor = i === c11Track ? '#ffe6a3' : 'rgba(255,214,231,0.4)');
+      }
+      document.getElementById('c11PlayPause').addEventListener('click', () => updateC11(!c11Playing));
+      document.getElementById('c11PrevTrack').addEventListener('click', () => { c11Track = (c11Track + 2) % 3; c11Prog = 0; updateC11(c11Playing); });
+      document.getElementById('c11NextTrack').addEventListener('click', () => { c11Track = (c11Track + 1) % 3; c11Prog = 0; updateC11(c11Playing); });
+      setInterval(() => {
+        if (c11Playing && currentChapter === 11) {
+          c11Prog = (c11Prog + 1.2) % 100;
+          document.getElementById('c11Progress').style.width = `${c11Prog}%`;
+          c11Bars.forEach((b) => { b.style.height = `${6 + Math.random() * 20}px`; });
+        } else { c11Bars.forEach((b) => { b.style.height = '5px'; }); }
+      }, 160);
+
+      // =========================================================================
+      // CHAPTER 12 — TYPE A WISH & BLOW 3 CANDLES
+      // =========================================================================
+      const c12Els = Array.from(document.querySelectorAll('.c12-candle'));
+      const c12Input = document.getElementById('c12WishInput');
+      const c12InputWrap = document.getElementById('c12InputWrap');
+      const c12Result = document.getElementById('c12WishResult');
+      const c12SavedWish = document.getElementById('c12SavedWish');
+      const risingOrb = document.getElementById('risingWishOrb');
+      let c12Hidden = false;
+
+      function blowC12() {
+        const txt = c12Input.value.trim() || 'A sweet secret wish for the stars ✨';
+        c12SavedWish.textContent = `“${txt}”`;
+        risingOrb.textContent = `✨ “${txt}” ✨`;
+        risingOrb.classList.remove('soar'); void risingOrb.offsetWidth; risingOrb.classList.add('soar');
+        playChime([659, 880, 1175]);
+        setTimeout(() => {
+          c12Els.forEach((el, i) => setTimeout(() => el.classList.add('out'), i * 130));
+          c12InputWrap.classList.add('hidden');
+          c12Result.classList.remove('hidden');
+          spawnConfetti(110); spawnBalloons(10); playChime([523, 659, 784, 1046, 1318], 1);
+        }, 900);
+      }
+      document.getElementById('c12BlowBtn').addEventListener('click', blowC12);
+      c12Input.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); blowC12(); } });
+      document.getElementById('c12ResetBtn').addEventListener('click', () => {
+        c12Els.forEach((el) => el.classList.remove('out'));
+        c12Input.value = ''; c12InputWrap.classList.remove('hidden'); c12Result.classList.add('hidden');
+        playChime([523, 659, 784]);
+      });
+      document.getElementById('c12PrivacyBtn').addEventListener('click', (e) => {
+        c12Hidden = !c12Hidden;
+        c12SavedWish.style.filter = c12Hidden ? 'blur(5px)' : 'none';
+        e.target.textContent = c12Hidden ? 'Show' : 'Hide';
+      });
+
+      // =========================================================================
+      // CHAPTER 13 — MAKE A WISH (100% LOCAL)
+      // =========================================================================
+      let c13Sent = 0;
+      const c13Ta = document.getElementById('c13Textarea');
+      document.getElementById('c13SendBtn').addEventListener('click', () => {
+        const w = c13Ta.value.trim();
+        if (!w) { document.getElementById('c13Card').classList.add('shake-x'); setTimeout(() => document.getElementById('c13Card').classList.remove('shake-x'), 450); return; }
+        c13Sent++;
+        document.getElementById('c13StarsCount').textContent = `${c13Sent} ${c13Sent === 1 ? 'STAR' : 'STARS'} SENT`;
+        risingOrb.textContent = `⭐ “${w}” ⭐`;
+        risingOrb.classList.remove('soar'); void risingOrb.offsetWidth; risingOrb.classList.add('soar');
+        c13Ta.value = '';
+        spawnShootingStar(); spawnBurst(W * 0.5, H * 0.55, 34); playChime([523, 659, 784, 1046, 1318], 1);
+        setTimeout(() => {
+          document.getElementById('c13InputMode').classList.add('hidden');
+          document.getElementById('c13SentMode').classList.remove('hidden');
+          document.getElementById('c13SentMode').classList.add('flex');
+        }, 650);
+      });
+      document.getElementById('c13ResetBtn').addEventListener('click', () => {
+        document.getElementById('c13SentMode').classList.add('hidden');
+        document.getElementById('c13SentMode').classList.remove('flex');
+        document.getElementById('c13InputMode').classList.remove('hidden');
+      });
+
+      // =========================================================================
+      // CHAPTER 14 — HAPPINESS GENERATOR (24 MESSAGES)
+      // =========================================================================
+      const C14_MSGS = [
+        'Today is full of possibilities.', 'Take a moment to enjoy the little things.',
+        'Something beautiful can begin with one small step.', 'Keep smiling and exploring.',
+        'Your next adventure is waiting.', 'You bring a bright, uplifting energy wherever you go.',
+        'Every single day holds a fresh reason to feel grateful.', 'Curiosity is your superpower—never stop wondering.',
+        'Small moments of joy add up to a wonderful life.', 'Believe in the magic of your own ideas.',
+        'The world feels a little sunnier with your smile in it.', 'Good things are always finding their way toward you.',
+        'Celebrate how far you have come and all the fun ahead.', 'A peaceful heart and a curious mind can go anywhere.',
+        'Your kindness creates ripples of happiness around you.', 'There is no rush—enjoy every step of your journey.',
+        'Even cloudy skies hide bright stars waiting to shine.', 'You deserve days filled with laughter and ease.',
+        'Every new chapter is a blank page ready for your colors.', 'Never forget how unique and capable you truly are.',
+        'Happiness often hides in the simplest everyday surprises.', 'Keep dreaming big and cheering for yourself.',
+        'Your positive spirit turns ordinary moments into treasures.', 'May today bring you calm, cheer, and a big reason to smile.'
+      ];
+      const c14Seen = new Set(); let c14Busy = false;
+      const capsuleModal = document.getElementById('capsuleModal');
+      function runC14() {
+        if (c14Busy) return; c14Busy = true;
+        capsuleModal.classList.remove('open');
+        const rig = document.getElementById('c14Machine'); rig.classList.add('working');
+        playChime([392, 440, 523, 587], 0.55); spawnBurst(W * 0.5, H * 0.48, 30);
+        setTimeout(() => {
+          rig.classList.remove('working');
+          const idx = Math.floor(Math.random() * C14_MSGS.length);
+          c14Seen.add(idx);
+          document.getElementById('c14Count').textContent = `${c14Seen.size} / 24 CAPSULES OPENED`;
+          document.getElementById('c14Tag').innerHTML = `&#10022; Capsule #${idx + 1} of 24 &#10022;`;
+          document.getElementById('c14Quote').textContent = `“${C14_MSGS[idx]}”`;
+          capsuleModal.classList.add('open');
+          spawnBurst(W * 0.5, H * 0.45, 38); playChime([523, 659, 784, 1046]);
+          c14Busy = false;
+        }, 900);
+      }
+      document.getElementById('c14GenBtn').addEventListener('click', runC14);
+      document.getElementById('c14Machine').addEventListener('click', runC14);
+      document.getElementById('c14AgainBtn').addEventListener('click', runC14);
+      document.getElementById('c14CloseBtn').addEventListener('click', () => capsuleModal.classList.remove('open'));
+      capsuleModal.addEventListener('click', (e) => { if (e.target === capsuleModal) capsuleModal.classList.remove('open'); });
+
+      // =========================================================================
+      // CHAPTER 15 — MINI FUN QUIZ (5 QUESTIONS)
+      // =========================================================================
+      const C15_QS = [
+        { q: 'Which place would you explore?', o: [['A','Magical forest','🌲'],['B','Outer space','🚀'],['C','Underwater world','🐚']] },
+        { q: 'Pick your favourite weather.', o: [['A','Rainy','🌧️'],['B','Sunny','☀️'],['C','Snowy','❄️']] },
+        { q: 'Choose a magical power.', o: [['A','Flying','🪽'],['B','Time travel','⏳'],['C','Talking to animals','🦋']] },
+        { q: 'Choose a perfect weekend.', o: [['A','Movie and snacks','🍿'],['B','Exploring somewhere new','🧭'],['C','Relaxing at home','🧸']] },
+        { q: 'Pick a magical companion.', o: [['A','Tiny dragon','🐉'],['B','Baby unicorn','🦄'],['C','Flying cat','🐱']] }
+      ];
+      const C15_MSGS = [
+        'You have an adventurous, imaginative spirit that makes every day brighter!',
+        'Your choices show a wonderful balance of curiosity, cozy joy, and everyday magic!',
+        'You bring a bright, playful energy wherever you go—what a wonderful combination!'
+      ];
+      let c15Idx = 0, c15Picks = [];
+      function renderC15() {
+        const q = C15_QS[c15Idx];
+        document.getElementById('c15StepLabel').textContent = `QUESTION ${c15Idx + 1} OF 5`;
+        document.getElementById('c15Bar').style.width = `${((c15Idx + 1) / 5) * 100}%`;
+        document.getElementById('c15QText').textContent = q.q;
+        const box = document.getElementById('c15Opts'); box.innerHTML = '';
+        q.o.forEach(([l, txt, ic], oi) => {
+          const b = document.createElement('button'); b.type = 'button';
+          b.className = 'w-full px-4 py-3 rounded-2xl bg-white/10 border border-pink-200/35 hover:border-amber-200 hover:bg-purple-800/40 flex items-center justify-between text-white font-semibold cursor-pointer transition';
+          b.innerHTML = `<span><strong class="text-amber-200 mr-2">${l}.</strong>${txt}</span><span class="text-xl">${ic}</span>`;
+          b.addEventListener('click', () => {
+            c15Picks.push(`${ic} ${txt}`); playChime([523 + oi * 75, 784], 0.5);
+            if (c15Idx < 4) { c15Idx++; renderC15(); }
+            else {
+              document.getElementById('c15QBox').classList.add('hidden');
+              const res = document.getElementById('c15ResultBox'); res.classList.remove('hidden'); res.classList.add('flex');
+              document.getElementById('c15ResultMsg').textContent = `“${C15_MSGS[Math.floor(Math.random() * C15_MSGS.length)]}”`;
+              document.getElementById('c15Summary').innerHTML = c15Picks.map((p) => `<span class="px-3 py-1 rounded-full bg-white/10 border border-pink-200/30 text-xs text-amber-200">${p}</span>`).join('');
+              spawnConfetti(80); playChime([523, 659, 784, 1046]);
+            }
+          });
+          box.appendChild(b);
+        });
+      }
+      document.getElementById('c15PlayAgain').addEventListener('click', () => {
+        c15Idx = 0; c15Picks = [];
+        document.getElementById('c15ResultBox').classList.add('hidden');
+        document.getElementById('c15ResultBox').classList.remove('flex');
+        document.getElementById('c15QBox').classList.remove('hidden');
+        renderC15();
+      });
+      renderC15();
+
+      // =========================================================================
+      // CHAPTER 16 — 8 POLAROID GALLERY + LIGHTBOX
+      // =========================================================================
+      const C16_FRAMES = [
+        ['Little moments', 'Quiet everyday details that bring a warm smile.', 'linear-gradient(145deg,#4b1d78,#ff9ec7)'],
+        ['Beautiful smiles', 'Bright energy that lights up any ordinary day.', 'linear-gradient(145deg,#2d1459,#c9b2ff)'],
+        ['Just a little happiness', 'Simple joys worth pausing to appreciate.', 'linear-gradient(145deg,#3b176e,#ffe6a3)'],
+        ['Memories worth keeping', 'Little snapshots saved for sunny days ahead.', 'linear-gradient(145deg,#27114b,#a3d5ff)'],
+        ['Brighter days ahead', 'Every new chapter brings fresh reasons to smile.', 'linear-gradient(145deg,#431a75,#ffb6d9)'],
+        ['Sweet little details', 'Noticing the small wonders hidden in every day.', 'linear-gradient(145deg,#2b1354,#ffd6e7)'],
+        ['Golden afternoon glow', 'Warm light, calm skies, and peaceful vibes.', 'linear-gradient(145deg,#3e196e,#ffe6a3)'],
+        ['Smiles to remember', 'Celebrating all the wonderful moments still to come.', 'linear-gradient(145deg,#241046,#ff9ec7)']
+      ];
+      const c16Grid = document.getElementById('c16Grid');
+      const galleryModal = document.getElementById('galleryModal');
+      let c16Cur = 0;
+      function openC16(idx) {
+        c16Cur = (idx + 8) % 8;
+        const [cap, sub, bg] = C16_FRAMES[c16Cur];
+        document.getElementById('c16BoxWindow').style.background = bg;
+        document.getElementById('c16FrameNum').textContent = `Frame 0${c16Cur + 1} of 08`;
+        document.getElementById('c16CapTitle').textContent = cap;
+        document.getElementById('c16CapSub').textContent = sub;
+        galleryModal.classList.add('open');
+        playChime([523 + c16Cur * 30, 784], 0.45);
+      }
+      C16_FRAMES.forEach(([cap, , bg], i) => {
+        const card = document.createElement('article'); card.className = 'polaroid-item text-center';
+        card.innerHTML = `<div class="w-full aspect-[4/3] rounded-md border border-dashed border-amber-200 flex items-center justify-center" style="background:${bg}"><span class="px-2.5 py-1 rounded-full bg-[#140829]/75 font-display text-[11px] font-bold text-amber-200">ADD PHOTO HERE</span></div><p class="font-handwritten text-xl font-bold text-purple-950 mt-2">${cap}</p>`;
+        card.addEventListener('click', () => openC16(i));
+        c16Grid.appendChild(card);
+      });
+      document.getElementById('c16Close').addEventListener('click', () => galleryModal.classList.remove('open'));
+      document.getElementById('c16Prev').addEventListener('click', () => openC16(c16Cur - 1));
+      document.getElementById('c16Next').addEventListener('click', () => openC16(c16Cur + 1));
+      galleryModal.addEventListener('click', (e) => { if (e.target === galleryModal) galleryModal.classList.remove('open'); });
+
+      // =========================================================================
+      // CHAPTER 17 — TREASURE CHEST (16 SURPRISES)
+      // =========================================================================
+      const C17_MSGS = [
+        'Never stop discovering new things.', 'May your days be filled with laughter.',
+        'Small joys can make big memories.', 'Keep your imagination alive.',
+        "There's always something beautiful to discover.", 'A little kindness goes a very long way.',
+        'Every ordinary day holds a tiny spark of magic.', 'Keep chasing the things that make your eyes light up.',
+        'Your curiosity is one of your brightest superpowers.', 'May good surprises find you when you least expect them.',
+        "Take a deep breath and enjoy how far you've come.", 'Brighter mornings and peaceful evenings are always ahead.',
+        'Never lose your sense of wonder.', 'Even the smallest smile can brighten an entire afternoon.',
+        'May your heart always feel light, safe, and cheerful.', 'Something wonderful is always waiting just around the corner.'
+      ];
+      let c17Idx = -1; const c17Seen = new Set();
+      function openC17() {
+        const chest = document.getElementById('c17Chest');
+        chest.classList.remove('open');
+        setTimeout(() => {
+          c17Idx = (c17Idx + 1) % C17_MSGS.length; c17Seen.add(c17Idx);
+          chest.classList.add('open');
+          document.getElementById('c17Card').classList.remove('hidden');
+          document.getElementById('c17Tag').textContent = `Surprise #${c17Idx + 1} of 16`;
+          document.getElementById('c17Msg').textContent = `“${C17_MSGS[c17Idx]}”`;
+          document.getElementById('c17Count').textContent = `${c17Seen.size} / 16 SURPRISES DISCOVERED`;
+          document.getElementById('c17Btn').innerHTML = '&#10227; Another Surprise';
+          spawnConfetti(70); spawnBurst(W * 0.5, H * 0.45, 34); playChime([523, 659, 784, 1046]);
+        }, 160);
+      }
+      document.getElementById('c17Btn').addEventListener('click', openC17);
+      document.getElementById('c17Chest').addEventListener('click', openC17);
+
+      // =========================================================================
+      // CHAPTER 18 — MEMORY GAME (12 CARDS / 6 PAIRS)
+      // =========================================================================
+      const C18_PAIRS = [['⭐','Stars'],['💖','Hearts'],['🌸','Flowers'],['☁️','Clouds'],['🦋','Butterflies'],['🌙','Moons']];
+      let c18Open = [], c18Matched = 0, c18Moves = 0, c18Lock = false;
+      function initC18() {
+        c18Open = []; c18Matched = 0; c18Moves = 0; c18Lock = false;
+        document.getElementById('c18Moves').textContent = '0';
+        document.getElementById('c18Pairs').textContent = '0 / 6';
+        document.getElementById('c18Victory').classList.add('hidden');
+        const deck = [...C18_PAIRS, ...C18_PAIRS].sort(() => Math.random() - 0.5);
+        const grid = document.getElementById('c18Grid'); grid.innerHTML = '';
+        deck.forEach(([em, lbl]) => {
+          const slot = document.createElement('div'); slot.className = 'perspective-box aspect-square';
+          const card = document.createElement('div'); card.className = 'flip-3d-inner'; card.dataset.lbl = lbl;
+          card.innerHTML = `
+            <div class="flip-face glass-panel"><span class="font-display text-3xl sm:text-4xl font-bold name-gradient">?</span></div>
+            <div class="flip-face flip-face-back keepsake-cream-card"><span class="text-3xl sm:text-4xl">${em}</span><span class="text-[10px] font-bold uppercase text-purple-900 mt-1">${lbl}</span></div>
+          `;
+          card.addEventListener('click', () => {
+            if (c18Lock || card.classList.contains('is-flipped') || card.dataset.done === '1') return;
+            card.classList.add('is-flipped'); c18Open.push(card); playChime([620], 0.25);
+            if (c18Open.length === 2) {
+              c18Lock = true; c18Moves++; document.getElementById('c18Moves').textContent = String(c18Moves);
+              const [a, b] = c18Open;
+              if (a.dataset.lbl === b.dataset.lbl) {
+                a.dataset.done = b.dataset.done = '1'; c18Matched++;
+                document.getElementById('c18Pairs').textContent = `${c18Matched} / 6`;
+                playChime([523, 659, 784, 1046]); c18Open = []; c18Lock = false;
+                if (c18Matched === 6) { document.getElementById('c18Victory').classList.remove('hidden'); spawnConfetti(100); }
+              } else {
+                setTimeout(() => { a.classList.remove('is-flipped'); b.classList.remove('is-flipped'); c18Open = []; c18Lock = false; }, 760);
+              }
+            }
+          });
+          slot.appendChild(card); grid.appendChild(slot);
+        });
+      }
+      document.getElementById('c18Restart').addEventListener('click', initC18);
+      initC18();
+
+      // =========================================================================
+      // CHAPTER 19 — A LITTLE MYSTERY GIFT
+      // =========================================================================
+      const C19_GIFTS = [
+        'Your gift is a little reminder:<br/>Keep dreaming, keep exploring,<br/>and never forget to enjoy the little things.<br/><strong class="text-pink-600 italic block mt-2">You deserve countless happy moments!</strong>',
+        'A pocket-sized wish for your days ahead:<br/>May curiosity always lead you to wonder,<br/>and may laughter find you in the simplest places.<br/><strong class="text-pink-600 italic block mt-2">Keep shining in your own bright way!</strong>',
+        'Wherever your next chapter takes you:<br/>May your mornings feel light and hopeful,<br/>and your evenings feel peaceful and warm.<br/><strong class="text-pink-600 italic block mt-2">The best adventures are still ahead!</strong>'
+      ];
+      let c19Idx = 0, c19Busy = false;
+      const c19Box = document.getElementById('c19Box'), c19Card = document.getElementById('c19Card');
+      const c19OpenBtn = document.getElementById('c19OpenBtn'), c19AnotherBtn = document.getElementById('c19AnotherBtn');
+
+      function openC19() {
+        if (c19Busy || c19Box.classList.contains('opened')) return;
+        c19Busy = true; c19Box.classList.add('shaking'); playChime([392, 440, 523], 0.45);
+        setTimeout(() => { c19Box.classList.remove('shaking'); c19Box.classList.add('untied'); }, 580);
+        setTimeout(() => {
+          c19Box.classList.add('opened');
+          document.getElementById('c19Msg').innerHTML = C19_GIFTS[c19Idx % C19_GIFTS.length];
+          c19Card.classList.remove('hidden'); c19OpenBtn.classList.add('hidden'); c19AnotherBtn.classList.remove('hidden');
+          spawnBurst(W * 0.5, H * 0.45, 55); spawnConfetti(70); playChime([523, 659, 784, 1046, 1318], 1);
+          c19Busy = false;
+        }, 1050);
+      }
+      c19OpenBtn.addEventListener('click', openC19);
+      c19Box.addEventListener('click', openC19);
+      c19AnotherBtn.addEventListener('click', () => {
+        c19Idx++; c19Card.classList.add('hidden'); c19Box.classList.remove('opened', 'untied');
+        c19AnotherBtn.classList.add('hidden'); c19OpenBtn.classList.remove('hidden');
+      });
+
+      // =========================================================================
+      // CHAPTER 20 — GRAND FINALE FIREWORKS BUTTON
+      // =========================================================================
+      document.getElementById('c20FireworksBtn').addEventListener('click', () => {
+        launchFirework(W * (0.2 + Math.random() * 0.6), H * (0.14 + Math.random() * 0.24));
+        spawnShootingStar(); playChime([523, 659, 784, 1046, 1318], 1);
+      });
+
+      // =========================================================================
+      // INITIALIZE ENGINE ON WINDOW LOAD
+      // =========================================================================
+      // MOBILE SWIPE GESTURES (LEFT = NEXT CHAPTER, RIGHT = PREVIOUS CHAPTER)
+      // =========================================================================
+      let touchStartX = 0, touchStartY = 0, touchStartTime = 0;
+      document.addEventListener('touchstart', (e) => {
+        if (!e.touches || e.touches.length !== 1) return;
+        const target = e.target;
+        if (target.closest('input, textarea, [contenteditable="true"], .modal-backdrop.open, .chapter-drawer.open')) {
+          touchStartX = 0; return;
+        }
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+        touchStartTime = Date.now();
+      }, { passive: true });
+
+      document.addEventListener('touchend', (e) => {
+        if (!touchStartX || !e.changedTouches || !e.changedTouches[0]) return;
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        const dy = e.changedTouches[0].clientY - touchStartY;
+        const dt = Date.now() - touchStartTime;
+        touchStartX = 0;
+
+        // Trigger only on intentional horizontal swipe
+        if (dt < 600 && Math.abs(dx) > 65 && Math.abs(dx) > Math.abs(dy) * 1.6) {
+          if (dx < 0 && currentChapter < 20) goToChapter(currentChapter + 1);
+          else if (dx > 0 && currentChapter > 1) goToChapter(currentChapter - 1);
+        }
+      }, { passive: true });
+
+      // =========================================================================
+      // INITIALIZE ENGINE ON WINDOW LOAD
+      // =========================================================================
+      window.addEventListener('resize', () => { resizeCanvas(); initStars(); });
+      window.onload = function () {
+        resizeCanvas();
+        initStars();
+        requestAnimationFrame(animateCanvas);
+        goToChapter(1);
+        if (window.innerWidth < 640) {
+          setTimeout(() => showToast('👆 Swipe left or right anytime to switch chapters ✨'), 1400);
+        }
+      };
+    })();
+  </script>
+</body>
+</html>
